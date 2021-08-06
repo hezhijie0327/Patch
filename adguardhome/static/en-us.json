@@ -469,7 +469,7 @@
     "plain_dns": "Plain DNS",
     "port_53_faq_link": "Port 53 is often occupied by \"DNSStubListener\" or \"systemd-resolved\" services. Please read <0>this instruction</0> on how to resolve this.",
     "previous_btn": "Previous",
-    "privacy_policy": "Privacy policy",
+    "privacy_policy": "Privacy Policy",
     "processing_update": "Please wait, AdGuard Home is being updated",
     "protocol": "Protocol",
     "punycode": "Punycode",
