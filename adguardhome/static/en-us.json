@@ -557,7 +557,7 @@
     "source_label": "Source",
     "static_ip": "Static IP Address",
     "static_ip_desc": "AdGuard Home is a server so it needs a static IP address to function properly. Otherwise, at some point, your router may assign a different IP address to this device.",
-    "statistics_clear": " Clear statistics",
+    "statistics_clear": "Clear statistics",
     "statistics_clear_confirm": "Are you sure you want to clear statistics?",
     "statistics_cleared": "Statistics successfully cleared",
     "statistics_configuration": "Statistics configuration",
