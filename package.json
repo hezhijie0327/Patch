@@ -2,12 +2,12 @@
   "adguardhome": {
     "binary": {
       "amd64": {
-        "golang": "https://golang.google.cn/dl/go1.17.linux-amd64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v16.7.0/node-v16.7.0-linux-x64.tar.xz"
+        "golang": "https://golang.org/dl/go1.17.linux-amd64.tar.gz",
+        "nodejs": "https://nodejs.org/dist/v16.7.0/node-v16.7.0-linux-x64.tar.gz"
       },
       "arm64": {
-        "golang": "https://golang.google.cn/dl/go1.17.linux-arm64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v16.7.0/node-v16.7.0-linux-arm64.tar.xz"
+        "golang": "https://golang.org/dl/go1.17.linux-arm64.tar.gz",
+        "nodejs": "https://nodejs.org/dist/v16.7.0/node-v16.7.0-linux-arm64.tar.gz"
       },
       "version": {
         "golang": "1.17",
