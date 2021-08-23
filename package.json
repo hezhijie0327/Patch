@@ -1,4 +1,25 @@
 {
+  "adguardhome": {
+    "lib": {
+      "binary": {
+        "amd64": {
+          "golang": "https://golang.google.cn/dl/go1.17.linux-amd64.tar.gz",
+          "nodejs": "https://nodejs.org/dist/v16.7.0/node-v16.7.0-linux-x64.tar.xz"
+        },
+        "arm64": {
+          "golang": "https://golang.google.cn/dl/go1.17.linux-arm64.tar.gz",
+          "nodejs": "https://nodejs.org/dist/v16.7.0/node-v16.7.0-linux-arm64.tar.xz"
+        }
+      },
+      "version": {
+        "golang": "1.17",
+        "nodejs": "16.7.0"
+      }
+    },
+    "patch": "https://github.com/hezhijie0327/Patch.git",
+    "source": "https://github.com/AdguardTeam/AdGuardHome.git",
+    "version": "0.107.0"
+  },
   "aria2c": {
     "lib": {
       "source": {
@@ -25,9 +46,5 @@
     "patch": "https://github.com/hezhijie0327/Patch.git",
     "source": "https://github.com/aria2/aria2.git",
     "version": "1.36.0"
-  },
-  "adguardhome": {
-    "lib": {},
-    "source": "https://github.com/AdguardTeam/AdGuardHome.git"
   }
 }
