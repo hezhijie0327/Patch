@@ -11,7 +11,8 @@
       },
       "version": {
         "golang": "1.17",
-        "nodejs": "16.7.0"
+        "nodejs": "16.7.0",
+        "npm": "7.20.3"
       }
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
