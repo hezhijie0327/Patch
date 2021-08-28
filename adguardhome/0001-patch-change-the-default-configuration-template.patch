@@ -1,12 +1,12 @@
-From 21191760a4ab51dc613508f541c169631c36f284 Mon Sep 17 00:00:00 2001
+From 926341cf8f35dd33562696b107e5902f5fba446b Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Thu, 29 Jul 2021 20:54:13 +0800
+Date: Sat, 28 Aug 2021 12:10:21 +0800
 Subject: [PATCH] Change the default configuration template
 
 ---
- internal/dnsforward/dnsforward.go |  8 ++---
- internal/home/config.go           | 52 +++++++++++++++----------------
- internal/home/filter.go           |  2 --
+ internal/dnsforward/dnsforward.go |   8 ++---
+ internal/home/config.go           |  52 +++++++++++++++---------------
+ internal/home/filter.go           |   2 --
  3 files changed, 30 insertions(+), 32 deletions(-)
 
 Command:
@@ -14,40 +14,41 @@ Command:
 	b. cat ./AdGuardHome/internal/home/config.go | sed "s/AllServers\:\ \ \ \ \ \ \ \ \ false/AllServers\:\ \ \ \ \ \ \ \ \ true/g;s/AuthAttempts\:\ 5/AuthAttempts\:\ 3/g;s/AuthBlockMin\:\ 15/AuthBlockMin\:\ 60/g;s/BlockedResponseTTL\:\ 10/BlockedResponseTTL\:\ 3600/g;s/BlockingMode\:\ \ \ \ \ \ \ \"default\"/BlockingMode\:\ \ \ \ \ \ \ \"refused\"/g;s/DNS\.CacheSize\ \=\ 4\ \*\ 1024\ \*\ 1024/DNS\.CacheSize\ \=\ 64\ \*\ 1024\ \*\ 1024/g;s/DNS\.DnsfilterConf\.CacheTime\ \=\ 30/DNS\.DnsfilterConf\.CacheTime\ \=\ 3600/g;s/DNS\.DnsfilterConf\.ParentalCacheSize\ \=\ 1\ \*\ 1024\ \*\ 1024/DNS\.DnsfilterConf\.ParentalCacheSize\ \=\ 64\ \*\ 1024\ \*\ 1024/g;s/DNS\.DnsfilterConf\.SafeBrowsingCacheSize\ \=\ 1\ \*\ 1024\ \*\ 1024/DNS\.DnsfilterConf\.SafeBrowsingCacheSize\ \=\ 64\ \*\ 1024\ \*\ 1024/g;s/DNS\.DnsfilterConf\.SafeSearchCacheSize\ \=\ 1\ \*\ 1024\ \*\ 1024/DNS\.DnsfilterConf\.SafeSearchCacheSize\ \=\ 64\ \*\ 1024\ \*\ 1024/g;s/DNS\.QueryLogInterval\ \=\ Duration{Duration\:\ 90\ \*\ 24\ \*\ time\.Hour}/DNS\.QueryLogInterval\ \=\ Duration{Duration\:\ 7\ \*\ 24\ \*\ time\.Hour}/g;s/DNS\.QueryLogMemSize\ \=\ 1000/DNS\.QueryLogMemSize\ \=\ 0/g;s/FilteringEnabled\:\ \ \ \ \ \ \ \ \ \ \ true/FilteringEnabled\:\ \ \ \ \ \ \ \ \ \ \ false/g;s/FiltersUpdateIntervalHours\:\ 24/FiltersUpdateIntervalHours\:\ 1/g;s/DHCP\.Conf4\.LeaseDuration\ \=\ 86400/DHCP\.Conf4\.LeaseDuration\ \=\ 3600/g;s/DHCP\.Conf6\.LeaseDuration\ \=\ 86400/DHCP\.Conf6\.LeaseDuration\ \=\ 3600/g;s/LogCompress\:\ \ \ false/LogCompress\:\ \ \ true/g;s/LogLocalTime\:\ \ false/LogLocalTime\:\ \ true/g;s/LogMaxAge\:\ \ \ \ \ 3/LogMaxAge\:\ \ \ \ \ 7/g;s/LogMaxBackups\:\ 0/LogMaxBackups\:\ 3/g;s/LogMaxSize\:\ \ \ \ 100/LogMaxSize\:\ \ \ \ 64/g;s/MaxGoroutines\:\ 300/MaxGoroutines\:\ 1000/g;s/PortDNSOverQUIC\:\ 784/PortDNSOverQUIC\:\ 8853/g;s/Ratelimit\:\ \ \ \ \ \ \ \ \ \ 20/Ratelimit\:\ \ \ \ \ \ \ \ \ \ 1000/g;s/StatsInterval\:\ 1/StatsInterval\:\ 1/g;s/WebSessionTTLHours\ \=\ 30\ \*\ 24/WebSessionTTLHours\ \=\ 1/g" > ./AdGuardHome/internal/home/config.go.tmp && mv ./AdGuardHome/internal/home/config.go.tmp ./AdGuardHome/internal/home/config.go
 	c. cat ./AdGuardHome/internal/home/filter.go | grep -v "filtering\.Filter{ID\:" > ./AdGuardHome/internal/home/filter.go.tmp && mv ./AdGuardHome/internal/home/filter.go.tmp ./AdGuardHome/internal/home/filter.go
 
+
 diff --git a/internal/dnsforward/dnsforward.go b/internal/dnsforward/dnsforward.go
-index 63bb58f7..d84ae198 100644
+index 6f9246b..c5c5e4b 100644
 --- a/internal/dnsforward/dnsforward.go
 +++ b/internal/dnsforward/dnsforward.go
-@@ -25,7 +25,7 @@ import (
+@@ -26,7 +26,7 @@ import (
  )
-
+ 
  // DefaultTimeout is the default upstream timeout
 -const DefaultTimeout = 10 * time.Second
 +const DefaultTimeout = 1 * time.Second
-
+ 
  // defaultClientIDCacheCount is the default count of items in the LRU client ID
  // cache.  The assumption here is that there won't be more than this many
-@@ -38,12 +38,12 @@ const (
+@@ -39,12 +39,12 @@ const (
  )
-
+ 
  var defaultDNS = []string{
 -	"https://dns10.quad9.net/dns-query",
 +	"https://dns.alidns.com:443/dns-query",
  }
 -var defaultBootstrap = []string{"9.9.9.10", "149.112.112.10", "2620:fe::10", "2620:fe::fe:10"}
 +var defaultBootstrap = []string{"tls://[223.5.5.5]:853", "tls://[223.6.6.6]:853", "tls://[2400:3200::1]:853", "tls://[2400:3200:baba::1]:853"}
-
+ 
  // Often requested by all kinds of DNS probes
 -var defaultBlockedHosts = []string{"version.bind", "id.server", "hostname.bind"}
 +var defaultBlockedHosts = []string{"|hostname.bind^", "|id.server^", "|version.bind^", "|version.server^"}
-
+ 
  var webRegistered bool
-
+ 
 diff --git a/internal/home/config.go b/internal/home/config.go
-index b3536210..510cd3de 100644
+index 710a582..c2b2985 100644
 --- a/internal/home/config.go
 +++ b/internal/home/config.go
-@@ -165,19 +165,19 @@ var config = configuration{
+@@ -167,19 +167,19 @@ var config = configuration{
  	BindPort:     3000,
  	BetaBindPort: 0,
  	BindHost:     net.IP{0, 0, 0, 0},
@@ -70,10 +71,10 @@ index b3536210..510cd3de 100644
  			RefuseAny:          true,
 -			AllServers:         false,
 +			AllServers:         true,
-
- 			TrustedProxies: []string{"127.0.0.0/8", "::1/128"},
-
-@@ -185,10 +185,10 @@ var config = configuration{
+ 			FastestTimeout: aghtime.Duration{
+ 				Duration: fastip.DefaultPingWaitTimeout,
+ 			},
+@@ -190,10 +190,10 @@ var config = configuration{
  			// we introduced a default limit due to this:
  			// https://github.com/AdguardTeam/AdGuardHome/issues/2015#issuecomment-674041912
  			// was later increased to 300 due to https://github.com/AdguardTeam/AdGuardHome/issues/2257
@@ -84,10 +85,10 @@ index b3536210..510cd3de 100644
 -		FiltersUpdateIntervalHours: 24,
 +		FilteringEnabled:           false, // whether or not use filter lists
 +		FiltersUpdateIntervalHours: 1,
- 		UpstreamTimeout:            Duration{Duration: dnsforward.DefaultTimeout},
+ 		UpstreamTimeout:            aghtime.Duration{Duration: dnsforward.DefaultTimeout},
  		LocalDomainName:            "lan",
  		ResolveClients:             true,
-@@ -197,14 +197,14 @@ var config = configuration{
+@@ -202,14 +202,14 @@ var config = configuration{
  	TLS: tlsConfigSettings{
  		PortHTTPS:       443,
  		PortDNSOverTLS:  853, // needs to be passed through to dnsproxy
@@ -108,16 +109,16 @@ index b3536210..510cd3de 100644
  	},
  	OSConfig:      &osConfig{},
  	SchemaVersion: currentSchemaVersion,
-@@ -212,23 +212,23 @@ var config = configuration{
-
+@@ -217,23 +217,23 @@ var config = configuration{
+ 
  // initConfig initializes default configuration for the current OS&ARCH
  func initConfig() {
 -	config.WebSessionTTLHours = 30 * 24
 +	config.WebSessionTTLHours = 1
-
+ 
  	config.DNS.QueryLogEnabled = true
  	config.DNS.QueryLogFileEnabled = true
--	config.DNS.QueryLogInterval = Duration{Duration: 90 * 24 * time.Hour}
+-	config.DNS.QueryLogInterval = aghtime.Duration{Duration: 90 * 24 * time.Hour}
 -	config.DNS.QueryLogMemSize = 1000
 -
 -	config.DNS.CacheSize = 4 * 1024 * 1024
@@ -125,7 +126,7 @@ index b3536210..510cd3de 100644
 -	config.DNS.DnsfilterConf.SafeSearchCacheSize = 1 * 1024 * 1024
 -	config.DNS.DnsfilterConf.ParentalCacheSize = 1 * 1024 * 1024
 -	config.DNS.DnsfilterConf.CacheTime = 30
-+	config.DNS.QueryLogInterval = Duration{Duration: 7 * 24 * time.Hour}
++	config.DNS.QueryLogInterval = aghtime.Duration{Duration: 7 * 24 * time.Hour}
 +	config.DNS.QueryLogMemSize = 0
 +
 +	config.DNS.CacheSize = 64 * 1024 * 1024
@@ -134,27 +135,28 @@ index b3536210..510cd3de 100644
 +	config.DNS.DnsfilterConf.ParentalCacheSize = 64 * 1024 * 1024
 +	config.DNS.DnsfilterConf.CacheTime = 3600
  	config.Filters = defaultFilters()
-
+ 
 -	config.DHCP.Conf4.LeaseDuration = 86400
 +	config.DHCP.Conf4.LeaseDuration = 3600
  	config.DHCP.Conf4.ICMPTimeout = 1000
 -	config.DHCP.Conf6.LeaseDuration = 86400
 +	config.DHCP.Conf6.LeaseDuration = 3600
-
+ 
  	if ch := version.Channel(); ch == version.ChannelEdge || ch == version.ChannelDevelopment {
  		config.BetaBindPort = 3001
 diff --git a/internal/home/filter.go b/internal/home/filter.go
-index 03965fbf..58d263d9 100644
+index 03965fb..58d263d 100644
 --- a/internal/home/filter.go
 +++ b/internal/home/filter.go
 @@ -57,8 +57,6 @@ func (f *Filtering) Close() {
-
+ 
  func defaultFilters() []filter {
  	return []filter{
 -		{Filter: filtering.Filter{ID: 1}, Enabled: true, URL: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", Name: "AdGuard DNS filter"},
 -		{Filter: filtering.Filter{ID: 2}, Enabled: false, URL: "https://adaway.org/hosts.txt", Name: "AdAway Default Blocklist"},
  	}
  }
+ 
+-- 
+2.33.0
 
---
-2.32.0
