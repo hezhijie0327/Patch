@@ -3,15 +3,15 @@
     "binary": {
       "aarch64": {
         "golang": "https://golang.org/dl/go1.17.linux-arm64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v16.9.0/node-v16.9.0-linux-arm64.tar.gz"
+        "nodejs": "https://nodejs.org/dist/v16.9.1/node-v16.9.0-linux-arm64.tar.gz"
       },
       "x86_64": {
         "golang": "https://golang.org/dl/go1.17.linux-amd64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v16.9.0/node-v16.9.0-linux-x64.tar.gz"
+        "nodejs": "https://nodejs.org/dist/v16.9.1/node-v16.9.0-linux-x64.tar.gz"
       },
       "version": {
         "golang": "1.17",
-        "nodejs": "16.9.0",
+        "nodejs": "16.9.1",
         "npm": "7.21.1"
       }
     },
