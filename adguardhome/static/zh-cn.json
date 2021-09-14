@@ -416,7 +416,7 @@
   "ip": "IP 地址",
   "ip_address": "IP 地址",
   "known_tracker": "已知的追踪器",
-  "last_rule_in_allowlist": "无法拦截此客户端（“{{disallowed_rule}}” 将禁用 “已放行的客户端”）",
+  "last_rule_in_allowlist": "无法拦截此客户端（移除 “{{disallowed_rule}}” 将禁用 “已放行的客户端”）",
   "last_time_updated_table_header": "更新时间",
   "list_confirm_delete": "确定要移除此列表吗？",
   "list_label": "列表",
