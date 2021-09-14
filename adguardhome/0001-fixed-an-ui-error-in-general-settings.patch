@@ -7,9 +7,6 @@ Subject: [PATCH] Fix an UI error in "General Settings"
  client/src/components/ui/Checkbox.js | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Command:
-    a. cat ./AdGuardHome/client/src/components/ui/Checkbox.js | sed "s/checkbox\_\_label\-text/checkbox\_\_label\-text\ checkbox\_\_label\-text\-\-long/g" > ./AdGuardHome/client/src/components/ui/Checkbox.js.tmp && mv ./AdGuardHome/client/src/components/ui/Checkbox.js.tmp ./AdGuardHome/client/src/components/ui/Checkbox.js
-
 diff --git a/client/src/components/ui/Checkbox.js b/client/src/components/ui/Checkbox.js
 index ce5b990a..a96dc371 100644
 --- a/client/src/components/ui/Checkbox.js
