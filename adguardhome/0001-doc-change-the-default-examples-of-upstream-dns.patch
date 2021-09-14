@@ -7,9 +7,6 @@ Subject: [PATCH] Change the default examples of upstream DNS
  .../components/Settings/Dns/Upstream/Examples.js   | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
-Command:
-    a. cat ./AdGuardHome/client/src/components/Settings/Dns/Upstream/Examples.js | sed "s/94\.140\.14\.140/\[223\.5\.5\.5\]\:53/g;s/\[\/example\.local\/\]\[223\.5\.5\.5\]\:53/\[\/example\.local\/\]https\:\/\/dns\.alidns\.com\:443\/dns\-query/g;s/comment<\/code>/在此处添加注释<\/code>/g;s/https\:\/\/dns\-unfiltered\.adguard\.com/https\:\/\/dns\.alidns\.com\:443/g;s/quic\:\/\/dns\-unfiltered\.adguard\.com\:784/quic\:\/\/dns\.alidns\.com\:8853/g;s/quic\:\/\/dns\-unfiltered\.adguard\.com\:8853/quic\:\/\/dns\.alidns\.com\:8853/g;s/tcp\:\/\/\[223\.5\.5\.5\]\:53/tcp\:\/\/dns\.alidns\.com\:53/g;s/tls\:\/\/dns\-unfiltered\.adguard\.com/tls\:\/\/dns\.alidns\.com\:853/g" > ./AdGuardHome/client/src/components/Settings/Dns/Upstream/Examples.js.tmp && mv ./AdGuardHome/client/src/components/Settings/Dns/Upstream/Examples.js.tmp ./AdGuardHome/client/src/components/Settings/Dns/Upstream/Examples.js
-
 diff --git a/client/src/components/Settings/Dns/Upstream/Examples.js b/client/src/components/Settings/Dns/Upstream/Examples.js
 index 4fd59ad1..19357f86 100644
 --- a/client/src/components/Settings/Dns/Upstream/Examples.js
@@ -19,7 +16,7 @@ index 4fd59ad1..19357f86 100644
          <ol className="leading-loose">
              <li>
 -                <code>94.140.14.140</code> - {props.t('example_upstream_regular')}
-+                <code>[223.5.5.5]:53</code> - {props.t('example_upstream_regular')}
++                <code>223.5.5.5:53</code> - {props.t('example_upstream_regular')}
              </li>
              <li>
 -                <code>tls://dns-unfiltered.adguard.com</code> –&nbsp;
@@ -50,7 +47,7 @@ index 4fd59ad1..19357f86 100644
              </li>
              <li>
 -                <code>tcp://94.140.14.140</code> – <Trans>example_upstream_tcp</Trans>
-+                <code>tcp://dns.alidns.com:53</code> – <Trans>example_upstream_tcp</Trans>
++                <code>tcp://223.5.5.5:53</code> – <Trans>example_upstream_tcp</Trans>
              </li>
              <li>
                  <code>sdns://...</code> –&nbsp;
