@@ -1,16 +1,17 @@
-From 926341cf8f35dd33562696b107e5902f5fba446b Mon Sep 17 00:00:00 2001
+From 7f7eab1ff899ea76933851e2c74531d04b49bbef Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Sat, 28 Aug 2021 12:10:21 +0800
+Date: Sat, 18 Sep 2021 16:01:34 +0800
 Subject: [PATCH] Change the default configuration template
 
 ---
- internal/dnsforward/dnsforward.go |   8 ++---
- internal/home/config.go           |  52 +++++++++++++++---------------
- internal/home/filter.go           |   2 --
- 3 files changed, 30 insertions(+), 32 deletions(-)
+ internal/dnsforward/dnsforward.go |  8 ++---
+ internal/home/config.go           | 50 +++++++++++++++----------------
+ internal/home/dns.go              |  2 +-
+ internal/home/filter.go           |  5 +---
+ 4 files changed, 31 insertions(+), 34 deletions(-)
 
 diff --git a/internal/dnsforward/dnsforward.go b/internal/dnsforward/dnsforward.go
-index 6f9246b..c5c5e4b 100644
+index 80d5154..53941ec 100644
 --- a/internal/dnsforward/dnsforward.go
 +++ b/internal/dnsforward/dnsforward.go
 @@ -26,7 +26,7 @@ import (
@@ -39,10 +40,10 @@ index 6f9246b..c5c5e4b 100644
  var webRegistered bool
  
 diff --git a/internal/home/config.go b/internal/home/config.go
-index 710a582..c2b2985 100644
+index f7cbd0b..301804a 100644
 --- a/internal/home/config.go
 +++ b/internal/home/config.go
-@@ -167,19 +167,19 @@ var config = configuration{
+@@ -169,19 +169,19 @@ var config = &configuration{
  	BindPort:     3000,
  	BetaBindPort: 0,
  	BindHost:     net.IP{0, 0, 0, 0},
@@ -52,7 +53,7 @@ index 710a582..c2b2985 100644
 +	AuthBlockMin: 60,
  	DNS: dnsConfig{
  		BindHosts:     []net.IP{{0, 0, 0, 0}},
- 		Port:          53,
+ 		Port:          defaultPortDNS,
  		StatsInterval: 1,
  		FilteringConfig: dnsforward.FilteringConfig{
  			ProtectionEnabled:  true,      // whether or not use any of filtering features
@@ -68,7 +69,7 @@ index 710a582..c2b2985 100644
  			FastestTimeout: aghtime.Duration{
  				Duration: fastip.DefaultPingWaitTimeout,
  			},
-@@ -190,10 +190,10 @@ var config = configuration{
+@@ -192,10 +192,10 @@ var config = &configuration{
  			// we introduced a default limit due to this:
  			// https://github.com/AdguardTeam/AdGuardHome/issues/2015#issuecomment-674041912
  			// was later increased to 300 due to https://github.com/AdguardTeam/AdGuardHome/issues/2257
@@ -82,12 +83,8 @@ index 710a582..c2b2985 100644
  		UpstreamTimeout:            aghtime.Duration{Duration: dnsforward.DefaultTimeout},
  		LocalDomainName:            "lan",
  		ResolveClients:             true,
-@@ -202,14 +202,14 @@ var config = configuration{
- 	TLS: tlsConfigSettings{
- 		PortHTTPS:       443,
- 		PortDNSOverTLS:  853, // needs to be passed through to dnsproxy
--		PortDNSOverQUIC: 784,
-+		PortDNSOverQUIC: 8853,
+@@ -207,11 +207,11 @@ var config = &configuration{
+ 		PortDNSOverQUIC: defaultPortQUIC,
  	},
  	logSettings: logSettings{
 -		LogCompress:   false,
@@ -103,7 +100,7 @@ index 710a582..c2b2985 100644
  	},
  	OSConfig:      &osConfig{},
  	SchemaVersion: currentSchemaVersion,
-@@ -217,23 +217,23 @@ var config = configuration{
+@@ -219,23 +219,23 @@ var config = &configuration{
  
  // initConfig initializes default configuration for the current OS&ARCH
  func initConfig() {
@@ -138,19 +135,34 @@ index 710a582..c2b2985 100644
  
  	if ch := version.Channel(); ch == version.ChannelEdge || ch == version.ChannelDevelopment {
  		config.BetaBindPort = 3001
+diff --git a/internal/home/dns.go b/internal/home/dns.go
+index 4b12058..78d3b9d 100644
+--- a/internal/home/dns.go
++++ b/internal/home/dns.go
+@@ -24,7 +24,7 @@ const (
+ 	defaultPortDNS   = 53
+ 	defaultPortHTTP  = 80
+ 	defaultPortHTTPS = 443
+-	defaultPortQUIC  = 784
++	defaultPortQUIC  = 8853
+ 	defaultPortTLS   = 853
+ )
+ 
 diff --git a/internal/home/filter.go b/internal/home/filter.go
-index 03965fb..58d263d 100644
+index 22bc743..e8e596e 100644
 --- a/internal/home/filter.go
 +++ b/internal/home/filter.go
-@@ -57,8 +57,6 @@ func (f *Filtering) Close() {
- 
- func defaultFilters() []filter {
- 	return []filter{
--		{Filter: filtering.Filter{ID: 1}, Enabled: true, URL: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", Name: "AdGuard DNS filter"},
--		{Filter: filtering.Filter{ID: 2}, Enabled: false, URL: "https://adaway.org/hosts.txt", Name: "AdAway Default Blocklist"},
- 	}
+@@ -57,10 +57,7 @@ func (f *Filtering) Close() {
  }
  
+ func defaultFilters() []filter {
+-	return []filter{
+-		{Filter: filtering.Filter{ID: 1}, Enabled: true, URL: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", Name: "AdGuard DNS filter"},
+-		{Filter: filtering.Filter{ID: 2}, Enabled: false, URL: "https://adaway.org/hosts.txt", Name: "AdAway Default Blocklist"},
+-	}
++	return []filter{}
+ }
+ 
+ // field ordering is important -- yaml fields will mirror ordering from here
 -- 
-2.33.0
-
+2.25.1
