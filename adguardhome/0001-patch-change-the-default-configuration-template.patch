@@ -31,7 +31,7 @@ index 80d5154..53941ec 100644
 +	"https://dns.alidns.com:443/dns-query",
  }
 -var defaultBootstrap = []string{"9.9.9.10", "149.112.112.10", "2620:fe::10", "2620:fe::fe:10"}
-+var defaultBootstrap = []string{"223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1"}
++var defaultBootstrap = []string{"tls://[223.5.5.5]:53", "tls://[223.6.6.6]:53", "tls://[2400:3200::1]:53", "tls://[2400:3200:baba::1]:53"}
  
  // Often requested by all kinds of DNS probes
 -var defaultBlockedHosts = []string{"version.bind", "id.server", "hostname.bind"}
