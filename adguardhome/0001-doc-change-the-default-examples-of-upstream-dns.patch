@@ -16,7 +16,7 @@ index 4fd59ad1..19357f86 100644
          <ol className="leading-loose">
              <li>
 -                <code>94.140.14.140</code> - {props.t('example_upstream_regular')}
-+                <code>223.5.5.5:53</code> - {props.t('example_upstream_regular')}
++                <code>[223.5.5.5]:53</code> - {props.t('example_upstream_regular')}
              </li>
              <li>
 -                <code>tls://dns-unfiltered.adguard.com</code> –&nbsp;
@@ -47,7 +47,7 @@ index 4fd59ad1..19357f86 100644
              </li>
              <li>
 -                <code>tcp://94.140.14.140</code> – <Trans>example_upstream_tcp</Trans>
-+                <code>tcp://223.5.5.5:53</code> – <Trans>example_upstream_tcp</Trans>
++                <code>tcp://[223.5.5.5]:53</code> – <Trans>example_upstream_tcp</Trans>
              </li>
              <li>
                  <code>sdns://...</code> –&nbsp;
