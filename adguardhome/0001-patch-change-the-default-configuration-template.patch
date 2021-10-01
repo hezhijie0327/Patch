@@ -40,10 +40,10 @@ index 80d5154..53941ec 100644
  var webRegistered bool
  
 diff --git a/internal/home/config.go b/internal/home/config.go
-index f7cbd0b..301804a 100644
+index 44afe95..b44f628 100644
 --- a/internal/home/config.go
 +++ b/internal/home/config.go
-@@ -169,19 +169,19 @@ var config = &configuration{
+@@ -168,19 +168,19 @@ var config = &configuration{
  	BindPort:     3000,
  	BetaBindPort: 0,
  	BindHost:     net.IP{0, 0, 0, 0},
@@ -66,10 +66,10 @@ index f7cbd0b..301804a 100644
  			RefuseAny:          true,
 -			AllServers:         false,
 +			AllServers:         true,
- 			FastestTimeout: aghtime.Duration{
+ 			FastestTimeout: timeutil.Duration{
  				Duration: fastip.DefaultPingWaitTimeout,
  			},
-@@ -192,10 +192,10 @@ var config = &configuration{
+@@ -191,10 +191,10 @@ var config = &configuration{
  			// we introduced a default limit due to this:
  			// https://github.com/AdguardTeam/AdGuardHome/issues/2015#issuecomment-674041912
  			// was later increased to 300 due to https://github.com/AdguardTeam/AdGuardHome/issues/2257
@@ -80,10 +80,10 @@ index f7cbd0b..301804a 100644
 -		FiltersUpdateIntervalHours: 24,
 +		FilteringEnabled:           false, // whether or not use filter lists
 +		FiltersUpdateIntervalHours: 1,
- 		UpstreamTimeout:            aghtime.Duration{Duration: dnsforward.DefaultTimeout},
+ 		UpstreamTimeout:            timeutil.Duration{Duration: dnsforward.DefaultTimeout},
  		LocalDomainName:            "lan",
  		ResolveClients:             true,
-@@ -207,11 +207,11 @@ var config = &configuration{
+@@ -206,11 +206,11 @@ var config = &configuration{
  		PortDNSOverQUIC: defaultPortQUIC,
  	},
  	logSettings: logSettings{
@@ -100,7 +100,7 @@ index f7cbd0b..301804a 100644
  	},
  	OSConfig:      &osConfig{},
  	SchemaVersion: currentSchemaVersion,
-@@ -219,23 +219,23 @@ var config = &configuration{
+@@ -218,23 +218,23 @@ var config = &configuration{
  
  // initConfig initializes default configuration for the current OS&ARCH
  func initConfig() {
@@ -109,7 +109,7 @@ index f7cbd0b..301804a 100644
  
  	config.DNS.QueryLogEnabled = true
  	config.DNS.QueryLogFileEnabled = true
--	config.DNS.QueryLogInterval = aghtime.Duration{Duration: 90 * 24 * time.Hour}
+-	config.DNS.QueryLogInterval = timeutil.Duration{Duration: 90 * timeutil.Day}
 -	config.DNS.QueryLogMemSize = 1000
 -
 -	config.DNS.CacheSize = 4 * 1024 * 1024
@@ -117,7 +117,7 @@ index f7cbd0b..301804a 100644
 -	config.DNS.DnsfilterConf.SafeSearchCacheSize = 1 * 1024 * 1024
 -	config.DNS.DnsfilterConf.ParentalCacheSize = 1 * 1024 * 1024
 -	config.DNS.DnsfilterConf.CacheTime = 30
-+	config.DNS.QueryLogInterval = aghtime.Duration{Duration: 7 * 24 * time.Hour}
++	config.DNS.QueryLogInterval = timeutil.Duration{Duration: 7 * timeutil.Day}
 +	config.DNS.QueryLogMemSize = 0
 +
 +	config.DNS.CacheSize = 64 * 1024 * 1024
@@ -135,6 +135,7 @@ index f7cbd0b..301804a 100644
  
  	if ch := version.Channel(); ch == version.ChannelEdge || ch == version.ChannelDevelopment {
  		config.BetaBindPort = 3001
+
 diff --git a/internal/home/dns.go b/internal/home/dns.go
 index 4b12058..78d3b9d 100644
 --- a/internal/home/dns.go
