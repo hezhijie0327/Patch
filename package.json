@@ -3,16 +3,16 @@
     "binary": {
       "aarch64": {
         "golang": "https://golang.org/dl/go1.17.2.linux-arm64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v17.0.0/node-v17.0.0-linux-arm64.tar.gz"
+        "nodejs": "https://nodejs.org/dist/v16.11.1/node-v16.11.1-linux-arm64.tar.gz"
       },
       "x86_64": {
         "golang": "https://golang.org/dl/go1.17.2.linux-amd64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v17.0.0/node-v17.0.0-linux-x64.tar.gz"
+        "nodejs": "https://nodejs.org/dist/v16.11.1/node-v16.11.1-linux-x64.tar.gz"
       },
       "version": {
         "golang": "1.17.2",
-        "nodejs": "17.0.0",
-        "npm": "8.1.0"
+        "nodejs": "16.11.1",
+        "npm": "8.0.0"
       }
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
