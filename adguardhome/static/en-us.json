@@ -580,6 +580,7 @@
   "stats_params": "Statistics configuration",
   "stats_query_domain": "Top queried domains",
   "subnet_error": "Addresses must be in one subnet",
+  "system_host_files": "System hosts files",
   "table_client": "Client",
   "table_name": "Name",
   "tags_desc": "You can select the tags that correspond to the client. Tags can be included in the filtering rules and allow you to apply them more accurately. <0>Learn more</0>",
