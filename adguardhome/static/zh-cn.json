@@ -580,6 +580,7 @@
   "stats_params": "仪表盘数据配置",
   "stats_query_domain": "请求排行（已处理）",
   "subnet_error": "IP 地址必须在同一个子网中",
+  "system_host_files": "系统 Hosts 文件",
   "table_client": "客户端",
   "table_name": "名称",
   "tags_desc": "通过标签以<0>更精准地应用过滤规则</0>，例如：一个管理员用户使用了搭载 Windows 操作系统的笔记本电脑，可添加以下配置 “user_admin” “os_windows” “device_laptop”。",
