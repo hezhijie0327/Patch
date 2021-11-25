@@ -20,7 +20,7 @@ index e016dee8..b177bbb3 100644
  const (
  	// DefaultDHCPLeaseTTL is the default time-to-live for leases.
 -	DefaultDHCPLeaseTTL = uint32(timeutil.Day / time.Second)
-+	DefaultDHCPLeaseTTL = uint32(1 * time.Hour / time.Second)
++	DefaultDHCPLeaseTTL = uint32(timeutil.Day / 24 / time.Second)
  	// DefaultDHCPTimeoutICMP is the default timeout for waiting ICMP responses.
  	DefaultDHCPTimeoutICMP = 1000
  )
