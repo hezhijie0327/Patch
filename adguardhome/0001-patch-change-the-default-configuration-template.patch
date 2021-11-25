@@ -1,17 +1,31 @@
-From 7f7eab1ff899ea76933851e2c74531d04b49bbef Mon Sep 17 00:00:00 2001
+From aae6e4d79c971f6b4615f8e7f122de5e49be541b Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Sat, 18 Sep 2021 16:01:34 +0800
+Date: Thu, 25 Nov 2021 22:45:39 +0800
 Subject: [PATCH] Change the default configuration template
 
 ---
- internal/dnsforward/dnsforward.go |  8 ++---
- internal/home/config.go           | 50 +++++++++++++++----------------
+ internal/dhcpd/http.go            |  2 +-
+ internal/dnsforward/dnsforward.go |  8 +++---
+ internal/home/config.go           | 46 +++++++++++++++----------------
  internal/home/dns.go              |  2 +-
  internal/home/filter.go           |  5 +---
- 4 files changed, 31 insertions(+), 34 deletions(-)
+ 5 files changed, 30 insertions(+), 33 deletions(-)
 
+diff --git a/internal/dhcpd/http.go b/internal/dhcpd/http.go
+index e016dee8..b177bbb3 100644
+--- a/internal/dhcpd/http.go
++++ b/internal/dhcpd/http.go
+@@ -537,7 +537,7 @@ func (s *Server) handleDHCPRemoveStaticLease(w http.ResponseWriter, r *http.Requ
+ 
+ const (
+ 	// DefaultDHCPLeaseTTL is the default time-to-live for leases.
+-	DefaultDHCPLeaseTTL = uint32(timeutil.Day / time.Second)
++	DefaultDHCPLeaseTTL = uint32(1 * time.Hour / time.Second)
+ 	// DefaultDHCPTimeoutICMP is the default timeout for waiting ICMP responses.
+ 	DefaultDHCPTimeoutICMP = 1000
+ )
 diff --git a/internal/dnsforward/dnsforward.go b/internal/dnsforward/dnsforward.go
-index 80d5154..53941ec 100644
+index a62a6614..6bfdc21e 100644
 --- a/internal/dnsforward/dnsforward.go
 +++ b/internal/dnsforward/dnsforward.go
 @@ -26,7 +26,7 @@ import (
@@ -40,7 +54,7 @@ index 80d5154..53941ec 100644
  var webRegistered bool
  
 diff --git a/internal/home/config.go b/internal/home/config.go
-index 44afe95..b44f628 100644
+index 3465c26f..80871665 100644
 --- a/internal/home/config.go
 +++ b/internal/home/config.go
 @@ -168,19 +168,19 @@ var config = &configuration{
@@ -100,7 +114,7 @@ index 44afe95..b44f628 100644
  	},
  	OSConfig:      &osConfig{},
  	SchemaVersion: currentSchemaVersion,
-@@ -218,23 +218,23 @@ var config = &configuration{
+@@ -218,18 +218,18 @@ var config = &configuration{
  
  // initConfig initializes default configuration for the current OS&ARCH
  func initConfig() {
@@ -127,17 +141,9 @@ index 44afe95..b44f628 100644
 +	config.DNS.DnsfilterConf.CacheTime = 3600
  	config.Filters = defaultFilters()
  
--	config.DHCP.Conf4.LeaseDuration = 86400
-+	config.DHCP.Conf4.LeaseDuration = 3600
- 	config.DHCP.Conf4.ICMPTimeout = 1000
--	config.DHCP.Conf6.LeaseDuration = 86400
-+	config.DHCP.Conf6.LeaseDuration = 3600
- 
- 	if ch := version.Channel(); ch == version.ChannelEdge || ch == version.ChannelDevelopment {
- 		config.BetaBindPort = 3001
-
+ 	config.DHCP.Conf4.LeaseDuration = dhcpd.DefaultDHCPLeaseTTL
 diff --git a/internal/home/dns.go b/internal/home/dns.go
-index 4b12058..78d3b9d 100644
+index 4b120581..78d3b9dc 100644
 --- a/internal/home/dns.go
 +++ b/internal/home/dns.go
 @@ -24,7 +24,7 @@ const (
@@ -150,7 +156,7 @@ index 4b12058..78d3b9d 100644
  )
  
 diff --git a/internal/home/filter.go b/internal/home/filter.go
-index 22bc743..e8e596e 100644
+index 74f85356..5c122b73 100644
 --- a/internal/home/filter.go
 +++ b/internal/home/filter.go
 @@ -57,10 +57,7 @@ func (f *Filtering) Close() {
@@ -166,4 +172,5 @@ index 22bc743..e8e596e 100644
  
  // field ordering is important -- yaml fields will mirror ordering from here
 -- 
-2.25.1
+2.34.0
+
