@@ -23,7 +23,7 @@
     "lib": {
       "source": {
         "c_ares": "https://c-ares.org/download/c-ares-1.18.1.tar.gz",
-        "expat": "https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.bz2",
+        "expat": "https://github.com/libexpat/libexpat/releases/download/R_2_4_2/expat-2.4.2.tar.bz2",
         "gperftools": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.9.1/gperftools-2.9.1.tar.gz",
         "libssh2": "https://www.libssh2.org/download/libssh2-1.10.0.tar.gz",
         "libuv": "https://dist.libuv.org/dist/v1.42.0/libuv-v1.42.0.tar.gz",
@@ -33,7 +33,7 @@
       },
       "version": {
         "c_ares": "1.18.1",
-        "expat": "2.4.1",
+        "expat": "2.4.2",
         "gperftools": "2.9.1",
         "libssh2": "1.10.0",
         "libuv": "1.42.0",
