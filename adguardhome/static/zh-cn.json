@@ -196,7 +196,7 @@
   "dns_test_ok_toast": "上游 DNS 服务器均已正常运作",
   "dnscrypt": "加密 DNS（DNSCrypt）",
   "dnssec_enable": "启用 DNSSEC 支持",
-  "dnssec_enable_desc": "如果启用，AdGuard Home 将向上游 DNS 服务器获取 RRSIG 记录并检查解析结果是否遭受修改。",
+  "dnssec_enable_desc": "如果启用，AdGuard Home 将在传出的 DNS 查询中设置 DNSSEC 标志并检查解析结果是否遭受修改。",
   "domain": "域名",
   "domain_desc": "在此处添加想要重定向的域名或通配符。",
   "domain_name_table_header": "域名",
