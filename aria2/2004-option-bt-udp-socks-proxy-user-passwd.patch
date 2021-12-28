@@ -1,7 +1,7 @@
 From a838cdde0aa83d5717856d5b133105453c4e3d53 Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Sun, 5 Dec 2021 08:33:56 +0800
-Subject: [PATCH 1/9] Add UDP SOCKS5 proxy support for BT
+Subject: [PATCH 01/12] Add UDP SOCKS5 proxy support for BT
 
 By inherienting DHTConnectionImpl that is used by UDP trackers and DHT connections
 ---
@@ -384,7 +384,7 @@ index cb6e3b7cf..c352021ab 100644
 From 2806da3298e716e12aec751f99b2215cbf5bdd62 Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Sun, 5 Dec 2021 19:36:10 +0800
-Subject: [PATCH 2/9] Add bt-udp-socks-proxy option with its utilities
+Subject: [PATCH 02/12] Add bt-udp-socks-proxy option with its utilities
 
 ---
  src/DHTSetup.cc             | 14 ++++++++++---
@@ -646,7 +646,7 @@ index ebf67e3d3..55f790277 100644
 From f2a66a68b3076a2b575fae85a3b9cec2adf25a22 Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Sun, 5 Dec 2021 20:57:12 +0800
-Subject: [PATCH 3/9] Setup BT UDP SOCKS5 proxy on demand
+Subject: [PATCH 03/12] Setup BT UDP SOCKS5 proxy on demand
 
 ---
  src/DHTSetup.cc | 15 +++++++++------
@@ -696,7 +696,7 @@ index d8cfb8d63..380f72769 100644
 From be6243f0b7a06125357f7417a029cf4c21fb5953 Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Sun, 5 Dec 2021 21:42:22 +0800
-Subject: [PATCH 4/9] Add test for BT UDP SOCKS5 proxy
+Subject: [PATCH 04/12] Add test for BT UDP SOCKS5 proxy
 
 ---
  test/DHTConnectionSocksProxyImplTest.cc | 82 +++++++++++++++++++++++++
@@ -808,7 +808,7 @@ index c71144490..d1cf5cb9d 100644
 From 71b652f8a156fe9b6d28b2470102378b1d872f31 Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Sun, 5 Dec 2021 21:42:44 +0800
-Subject: [PATCH 5/9] Fix receiving handling in BT UDP SOCKS5 proxy
+Subject: [PATCH 05/12] Fix receiving handling in BT UDP SOCKS5 proxy
 
 ---
  src/DHTConnectionSocksProxyImpl.cc | 8 ++++----
@@ -857,7 +857,7 @@ index 1ac0bdd00..852b094f5 100644
 From 12d419d7fce01ed655b3806f50233112c2d20a25 Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Mon, 6 Dec 2021 03:37:13 +0800
-Subject: [PATCH 6/9] Fix fmt param type in logging
+Subject: [PATCH 06/12] Fix fmt param type in logging
 
 ---
  src/DHTSetup.cc | 2 +-
@@ -880,7 +880,7 @@ index 380f72769..02e20f290 100644
 From 60d986873f0c29015e49a988f64e6ec4803fdf42 Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Mon, 6 Dec 2021 03:55:47 +0800
-Subject: [PATCH 7/9] Fix make_unique importing
+Subject: [PATCH 07/12] Fix make_unique importing
 
 ---
  src/DHTConnectionSocksProxyImpl.cc | 3 ++-
@@ -910,7 +910,7 @@ index 852b094f5..4684e828a 100644
 From de08f510be44605309bf5ec2cfd7c603d07332eb Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Tue, 7 Dec 2021 22:01:01 +0800
-Subject: [PATCH 8/9] Extract SOCKS5 logic into new class SocksProxySockct
+Subject: [PATCH 08/12] Extract SOCKS5 logic into new class SocksProxySockct
 
 ---
  src/DHTConnectionSocksProxyImpl.cc | 100 +++-----------
@@ -1434,7 +1434,7 @@ index 000000000..1447d08b7
 From 9061677c0ea6af48a40c3fe028cc554341670cff Mon Sep 17 00:00:00 2001
 From: myl7 <myl@myl.moe>
 Date: Fri, 17 Dec 2021 08:06:56 +0800
-Subject: [PATCH 9/9] Update start udp associate method
+Subject: [PATCH 09/12] Update start udp associate method
 
 Rename func according to RFC.
 Fix bad type of return.
@@ -1512,3 +1512,442 @@ index 1447d08b7..93854c9d0 100644
  
    // Get bnd addr and port via index i.
    // i is not checked and should be got from start*Proxy methods.
+
+From ddabffd44351d9217d1d9f3f68128537b09ea8b8 Mon Sep 17 00:00:00 2001
+From: myl7 <myl@myl.moe>
+Date: Sun, 26 Dec 2021 20:18:43 +0800
+Subject: [PATCH 10/12] Fix char appending to sstream and res len counting
+
+---
+ src/SocksProxySocket.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/SocksProxySocket.cc b/src/SocksProxySocket.cc
+index 848a2757d..075d9ff15 100644
+--- a/src/SocksProxySocket.cc
++++ b/src/SocksProxySocket.cc
+@@ -115,7 +115,7 @@ SocksProxySocket::startUdpAssociate(const std::string& listenAddr,
+                                     std::pair<std::string*, uint16_t*> bnd)
+ {
+   std::stringstream req;
+-  req << C_SOCKS_VER << C_CMD_UDP_ASSOCIATE << 0;
++  req << C_SOCKS_VER << C_CMD_UDP_ASSOCIATE << '\x00';
+   if (family_ == AF_INET) {
+     if (!listenAddr.empty()) {
+       char addrBuf[10];
+@@ -177,8 +177,8 @@ SocksProxySocket::startUdpAssociate(const std::string& listenAddr,
+   }
+   else if (res[3] == C_ADDR_DOMAIN) {
+     // 2 more bytes to hold port temporarily.
+-    bndAddr = std::string(res[4] + 2, 0);
+-    resLen = res[4] + 2;
++    size_t resLen = res[4] + 2;
++    bndAddr = std::string(resLen, '\x00');
+     socket_->readData(&bndAddr[0], resLen);
+     bndPort = ntohs(*reinterpret_cast<uint16_t*>(&bndAddr[0] + res[4]));
+     bndAddr.resize(res[4]);
+
+From 6ab8af1ef531601f6072ae03eff755ff5d6a49f4 Mon Sep 17 00:00:00 2001
+From: myl7 <myl@myl.moe>
+Date: Tue, 28 Dec 2021 16:33:35 +0800
+Subject: [PATCH 11/12] Refactor SOCKS socket code
+
+Separate sending cmd and receiving reply out as they are shared in
+procedures.
+Change returns of start* method.
+---
+ src/DHTConnectionSocksProxyImpl.cc | 14 ++---
+ src/SocksProxySocket.cc            | 83 ++++++++++++++++++------------
+ src/SocksProxySocket.h             | 34 ++++++------
+ 3 files changed, 75 insertions(+), 56 deletions(-)
+
+diff --git a/src/DHTConnectionSocksProxyImpl.cc b/src/DHTConnectionSocksProxyImpl.cc
+index 16f69b9c1..45202c19f 100644
+--- a/src/DHTConnectionSocksProxyImpl.cc
++++ b/src/DHTConnectionSocksProxyImpl.cc
+@@ -63,15 +63,15 @@ bool DHTConnectionSocksProxyImpl::startProxy(const std::string& host,
+   // Authentication negotiation
+   bool noAuth = user.empty() || passwd.empty();
+   if (noAuth) {
+-    int authMethod =
+-        socket_->negotiateAuth(std::vector<uint8_t>{SOCKS_AUTH_NO_AUTH});
++    int authMethod = socket_->negotiateAuth(
++        std::vector<SocksProxyAuthMethod>{SOCKS_AUTH_NO_AUTH});
+     if (authMethod < 0) {
+       return false;
+     }
+   }
+   else {
+-    int authMethod = socket_->negotiateAuth(
+-        std::vector<uint8_t>{SOCKS_AUTH_NO_AUTH, SOCKS_AUTH_USERPASS});
++    int authMethod = socket_->negotiateAuth(std::vector<SocksProxyAuthMethod>{
++        SOCKS_AUTH_NO_AUTH, SOCKS_AUTH_USERPASS});
+     if (authMethod < 0) {
+       return false;
+     }
+@@ -86,9 +86,9 @@ bool DHTConnectionSocksProxyImpl::startProxy(const std::string& host,
+   }
+ 
+   // UDP associate
+-  ssize_t i = socket_->startUdpAssociate(listenAddr, listenPort,
+-                                         std::make_pair(&bndAddr_, &bndPort_));
+-  if (i < 0) {
++  int i =
++      socket_->startUdpAssociate(listenAddr, listenPort, bndAddr_, bndPort_);
++  if (i != 0) {
+     return false;
+   }
+   return true;
+diff --git a/src/SocksProxySocket.cc b/src/SocksProxySocket.cc
+index 075d9ff15..ebb18b7ec 100644
+--- a/src/SocksProxySocket.cc
++++ b/src/SocksProxySocket.cc
+@@ -45,15 +45,17 @@ const char C_SOCKS_VER = '\x05';
+ const char C_AUTH_NONE = '\xff';
+ const char C_AUTH_USERPASS_VER = '\x01';
+ const char C_AUTH_USERPASS_OK = '\x00';
+-const char C_CMD_UDP_ASSOCIATE = '\x03';
+-const char C_ADDR_INET = '\x01';
+-const char C_ADDR_DOMAIN = '\x03';
+-const char C_ADDR_INET6 = '\x04';
+ const char C_OK = '\x00';
+ } // namespace
+ 
+ namespace aria2 {
+ 
++enum SocksProxyAddrType {
++  SOCKS_ADDR_INET = 1,
++  SOCKS_ADDR_DOMAIN = 3,
++  SOCKS_ADDR_INET6 = 4,
++};
++
+ SocksProxySocket::SocksProxySocket(int family) : family_(family) {}
+ 
+ SocksProxySocket::~SocksProxySocket() = default;
+@@ -70,13 +72,13 @@ void SocksProxySocket::establish(std::unique_ptr<SocketCore> socket)
+   socket_ = std::move(socket);
+ }
+ 
+-int SocksProxySocket::negotiateAuth(std::vector<uint8_t> expected)
++int SocksProxySocket::negotiateAuth(std::vector<SocksProxyAuthMethod> expected)
+ {
+   std::stringstream req;
+   req << C_SOCKS_VER;
+   req << static_cast<char>(expected.size());
+   for (auto c : expected) {
+-    req << c;
++    req << static_cast<char>(c);
+   }
+   socket_->writeData(req.str());
+ 
+@@ -109,77 +111,81 @@ char SocksProxySocket::authByUserpass(const std::string& user,
+   return res[1];
+ }
+ 
+-ssize_t
+-SocksProxySocket::startUdpAssociate(const std::string& listenAddr,
+-                                    uint16_t listenPort,
+-                                    std::pair<std::string*, uint16_t*> bnd)
++void SocksProxySocket::sendCmd(SocksProxyCmd cmd, const std::string& dstAddr,
++                               uint16_t dstPort, bool allowEmpty)
+ {
+   std::stringstream req;
+-  req << C_SOCKS_VER << C_CMD_UDP_ASSOCIATE << '\x00';
++  req << C_SOCKS_VER << static_cast<char>(cmd) << '\x00';
+   if (family_ == AF_INET) {
+-    if (!listenAddr.empty()) {
++    if (!allowEmpty || !dstAddr.empty()) {
+       char addrBuf[10];
+-      net::getBinAddr(addrBuf, listenAddr);
+-      req << C_ADDR_INET << std::string(addrBuf, 4);
++      net::getBinAddr(addrBuf, dstAddr);
++      req << static_cast<char>(SOCKS_ADDR_INET) << std::string(addrBuf, 4);
+     }
+     else {
+       req << std::string(4, '\x00');
+     }
+   }
+   else {
+-    if (!listenAddr.empty()) {
++    if (!allowEmpty || !dstAddr.empty()) {
+       char addrBuf[20];
+-      net::getBinAddr(addrBuf, listenAddr);
+-      req << C_ADDR_INET6 << std::string(addrBuf, 16);
++      net::getBinAddr(addrBuf, dstAddr);
++      req << static_cast<char>(SOCKS_ADDR_INET6) << std::string(addrBuf, 16);
+     }
+     else {
+       req << std::string(16, '\x00');
+     }
+   }
+-  if (listenPort) {
+-    uint16_t listenPortBuf = htons(listenPort);
++  if (dstPort) {
++    uint16_t listenPortBuf = htons(dstPort);
+     req << std::string(reinterpret_cast<const char*>(&listenPortBuf), 2);
+   }
+   else {
+     req << std::string(2, '\x00');
+   }
+   socket_->writeData(req.str());
++}
+ 
++int SocksProxySocket::receiveReply(int& bndFamily, std::string& bndAddr,
++                                   uint16_t& bndPort)
++{
+   char res[5];
+   size_t resLen = sizeof(res);
+   socket_->readData(res, resLen);
+-  if (res[1] != C_OK) {
++  int rep = res[1];
++  if (rep != C_OK) {
+     socket_->closeConnection();
+-    return -1;
++    return rep;
+   }
+ 
+-  std::string bndAddr;
+-  uint16_t bndPort;
+-  if (res[3] == C_ADDR_INET) {
++  if (res[3] == SOCKS_ADDR_INET) {
+     char addrBuf[6];
+     addrBuf[0] = res[4];
+     size_t addrLen = sizeof(addrBuf) - 1;
+     socket_->readData(addrBuf + 1, addrLen);
+     char addrStrBuf[20];
+     inetNtop(AF_INET, addrBuf, addrStrBuf, 20);
++    bndFamily = AF_INET;
+     bndAddr = std::string(addrStrBuf);
+     bndPort = ntohs(*reinterpret_cast<uint16_t*>(addrBuf + 4));
+   }
+-  else if (res[3] == C_ADDR_INET6) {
++  else if (res[3] == SOCKS_ADDR_INET6) {
+     char addrBuf[18];
+     addrBuf[0] = res[4];
+     size_t addrLen = sizeof(addrBuf) - 1;
+     socket_->readData(addrBuf + 1, addrLen);
+     char addrStrBuf[50];
+     inetNtop(AF_INET6, addrBuf, addrStrBuf, 50);
++    bndFamily = AF_INET6;
+     bndAddr = std::string(addrStrBuf);
+     bndPort = ntohs(*reinterpret_cast<uint16_t*>(addrBuf + 16));
+   }
+-  else if (res[3] == C_ADDR_DOMAIN) {
++  else if (res[3] == SOCKS_ADDR_DOMAIN) {
+     // 2 more bytes to hold port temporarily.
+     size_t resLen = res[4] + 2;
+     bndAddr = std::string(resLen, '\x00');
+     socket_->readData(&bndAddr[0], resLen);
++    bndFamily = AF_INET + AF_INET6;
+     bndPort = ntohs(*reinterpret_cast<uint16_t*>(&bndAddr[0] + res[4]));
+     bndAddr.resize(res[4]);
+   }
+@@ -187,15 +193,26 @@ SocksProxySocket::startUdpAssociate(const std::string& listenAddr,
+     socket_->closeConnection();
+     return -1;
+   }
++  return rep;
++}
+ 
+-  ssize_t i = static_cast<ssize_t>(bndAddrs_.size());
+-  bndAddrs_.push_back(bndAddr);
+-  bndPorts_.push_back(bndPort);
+-  if (bnd.first && bnd.second) {
+-    *(bnd.first) = bndAddr;
+-    *(bnd.second) = bndPort;
++int SocksProxySocket::startUdpAssociate(const std::string& listenAddr,
++                                        uint16_t listenPort,
++                                        std::string& bndAddr, uint16_t& bndPort)
++{
++  sendCmd(SOCKS_CMD_UDP_ASSOCIATE, listenAddr, listenPort, true);
++
++  int bFamily;
++  std::string bAddr;
++  uint16_t bPort;
++  int rep = receiveReply(bFamily, bAddr, bPort);
++  if (rep != C_OK) {
++    return rep;
+   }
+-  return i;
++
++  bndAddr = bAddr;
++  bndPort = bPort;
++  return rep;
+ }
+ 
+ } // namespace aria2
+diff --git a/src/SocksProxySocket.h b/src/SocksProxySocket.h
+index 93854c9d0..f0979b456 100644
+--- a/src/SocksProxySocket.h
++++ b/src/SocksProxySocket.h
+@@ -58,8 +58,20 @@ class SocksProxySocket {
+   // The socket is not shared because as it is used as some kind of controller,
+   // when it is closed, all related proxy connections are closed.
+   std::unique_ptr<SocketCore> socket_;
+-  std::vector<std::string> bndAddrs_;
+-  std::vector<uint16_t> bndPorts_;
++
++  enum SocksProxyCmd {
++    SOCKS_CMD_CONNECT = 1,
++    SOCKS_CMD_BIND = 2,
++    SOCKS_CMD_UDP_ASSOCIATE = 3,
++  };
++
++  // When allowEmtpy is true, allow dst* to be empty.
++  void sendCmd(SocksProxyCmd cmd, const std::string& dstAddr, uint16_t dstPort,
++               bool allowEmpty);
++  // Returns status replied from proxy server. 0 is OK. > 0 with error messages.
++  // < 0 for invalid replies from server.
++  // bndFamily may be AF_INET + AF_INET6 to indicate domain format.
++  int receiveReply(int& bndFamily, std::string& bndAddr, uint16_t& bndPort);
+ 
+ public:
+   SocksProxySocket(int family);
+@@ -75,10 +87,8 @@ class SocksProxySocket {
+ 
+   // Negotiate authentication that returns selected auth method in 0-255.
+   // When no auth method is selected, return -1.
+-  // Auth methods in expected should be from enum SocksProxyAuthMethod,
+-  // which has its auth handlers.
+   // Returned auth method SHOULD be in expected but it is not checked.
+-  int negotiateAuth(std::vector<uint8_t> expected);
++  int negotiateAuth(std::vector<SocksProxyAuthMethod> expected);
+ 
+   // Username/Password authentication.
+   // user and pass should not be empty.
+@@ -87,17 +97,9 @@ class SocksProxySocket {
+ 
+   // Create an UDP association to start UDP proxy.
+   // Leave listen host and port empty / 0 to indicate no receiving from proxy.
+-  // Returns -1 when error, otherwise the index to get the bnd addr and port.
+-  // Set bndAddrPtr and bndPortPtr to directly get the result bnd addr and port.
+-  ssize_t startUdpAssociate(const std::string& listenAddr, uint16_t listenPort,
+-                            std::pair<std::string*, uint16_t*> bnd = {});
+-
+-  // Get bnd addr and port via index i.
+-  // i is not checked and should be got from start*Proxy methods.
+-  std::pair<std::string, uint16_t> getBnd(size_t i)
+-  {
+-    return std::make_pair(bndAddrs_[i], bndPorts_[i]);
+-  }
++  // Returns status replied from proxy server. 0 is OK.
++  int startUdpAssociate(const std::string& listenAddr, uint16_t listenPort,
++                        std::string& bndAddr, uint16_t& bndPort);
+ };
+ 
+ } // namespace aria2
+
+From afb45ee0bc2145d408e30034c728411e5d83cde8 Mon Sep 17 00:00:00 2001
+From: myl7 <myl@myl.moe>
+Date: Tue, 28 Dec 2021 17:15:08 +0800
+Subject: [PATCH 12/12] Add auth helper for no auth or userpass auth
+
+---
+ src/DHTConnectionSocksProxyImpl.cc | 25 +++---------------------
+ src/SocksProxySocket.cc            | 31 ++++++++++++++++++++++++++++--
+ src/SocksProxySocket.h             |  7 ++++++-
+ 3 files changed, 38 insertions(+), 25 deletions(-)
+
+diff --git a/src/DHTConnectionSocksProxyImpl.cc b/src/DHTConnectionSocksProxyImpl.cc
+index 45202c19f..f7dd7e7c9 100644
+--- a/src/DHTConnectionSocksProxyImpl.cc
++++ b/src/DHTConnectionSocksProxyImpl.cc
+@@ -61,28 +61,9 @@ bool DHTConnectionSocksProxyImpl::startProxy(const std::string& host,
+   socket_->establish(host, port);
+ 
+   // Authentication negotiation
+-  bool noAuth = user.empty() || passwd.empty();
+-  if (noAuth) {
+-    int authMethod = socket_->negotiateAuth(
+-        std::vector<SocksProxyAuthMethod>{SOCKS_AUTH_NO_AUTH});
+-    if (authMethod < 0) {
+-      return false;
+-    }
+-  }
+-  else {
+-    int authMethod = socket_->negotiateAuth(std::vector<SocksProxyAuthMethod>{
+-        SOCKS_AUTH_NO_AUTH, SOCKS_AUTH_USERPASS});
+-    if (authMethod < 0) {
+-      return false;
+-    }
+-
+-    // Username/Password authentication
+-    if (authMethod == SOCKS_AUTH_USERPASS) {
+-      int status = socket_->authByUserpass(user, passwd);
+-      if (status != 0) {
+-        return false;
+-      }
+-    }
++  bool res = socket_->authByUserpassOrNone(user, passwd);
++  if (!res) {
++    return false;
+   }
+ 
+   // UDP associate
+diff --git a/src/SocksProxySocket.cc b/src/SocksProxySocket.cc
+index ebb18b7ec..5f4d6270f 100644
+--- a/src/SocksProxySocket.cc
++++ b/src/SocksProxySocket.cc
+@@ -93,8 +93,8 @@ int SocksProxySocket::negotiateAuth(std::vector<SocksProxyAuthMethod> expected)
+   return authMethod;
+ }
+ 
+-char SocksProxySocket::authByUserpass(const std::string& user,
+-                                      const std::string& passwd)
++int SocksProxySocket::authByUserpass(const std::string& user,
++                                     const std::string& passwd)
+ {
+   std::stringstream req;
+   req << C_AUTH_USERPASS_VER;
+@@ -111,6 +111,33 @@ char SocksProxySocket::authByUserpass(const std::string& user,
+   return res[1];
+ }
+ 
++bool SocksProxySocket::authByUserpassOrNone(const std::string& user,
++                                            const std::string& passwd)
++{
++  bool noAuth = user.empty() || passwd.empty();
++  if (noAuth) {
++    int authMethod =
++        negotiateAuth(std::vector<SocksProxyAuthMethod>{SOCKS_AUTH_NO_AUTH});
++    if (authMethod < 0) {
++      return false;
++    }
++  }
++  else {
++    int authMethod = negotiateAuth(std::vector<SocksProxyAuthMethod>{
++        SOCKS_AUTH_NO_AUTH, SOCKS_AUTH_USERPASS});
++    if (authMethod < 0) {
++      return false;
++    }
++    if (authMethod == SOCKS_AUTH_USERPASS) {
++      int status = authByUserpass(user, passwd);
++      if (status != 0) {
++        return false;
++      }
++    }
++  }
++  return true;
++}
++
+ void SocksProxySocket::sendCmd(SocksProxyCmd cmd, const std::string& dstAddr,
+                                uint16_t dstPort, bool allowEmpty)
+ {
+diff --git a/src/SocksProxySocket.h b/src/SocksProxySocket.h
+index f0979b456..0b6039502 100644
+--- a/src/SocksProxySocket.h
++++ b/src/SocksProxySocket.h
+@@ -93,7 +93,12 @@ class SocksProxySocket {
+   // Username/Password authentication.
+   // user and pass should not be empty.
+   // Returns status replied from proxy server. 0 is OK.
+-  char authByUserpass(const std::string& user, const std::string& passwd);
++  int authByUserpass(const std::string& user, const std::string& passwd);
++
++  // Helper to negotiate and auth by username/password authentication, or skip
++  // it if not required.
++  // Leave either user or pass empty to force no authentication.
++  bool authByUserpassOrNone(const std::string& user, const std::string& passwd);
+ 
+   // Create an UDP association to start UDP proxy.
+   // Leave listen host and port empty / 0 to indicate no receiving from proxy.
