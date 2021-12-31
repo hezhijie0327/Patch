@@ -17,7 +17,7 @@
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
     "source": "https://github.com/AdguardTeam/AdGuardHome.git",
-    "version": "0.107.0"
+    "version": "0.108.0"
   },
   "aria2c": {
     "lib": {
