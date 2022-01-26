@@ -95,10 +95,12 @@ index 3465c26f..80871665 100644
 +		FilteringEnabled:           false, // whether or not use filter lists
 +		FiltersUpdateIntervalHours: 1,
  		UpstreamTimeout:            timeutil.Duration{Duration: dnsforward.DefaultTimeout},
- 		LocalDomainName:            "lan",
  		ResolveClients:             true,
 @@ -206,11 +206,11 @@ var config = &configuration{
  		PortDNSOverQUIC: defaultPortQUIC,
+ 	},
+  DHCP: &dhcpd.ServerConfig{
+		 LocalDomainName: "lan",
  	},
  	logSettings: logSettings{
 -		LogCompress:   false,
