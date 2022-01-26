@@ -54,10 +54,10 @@ index a62a6614..6bfdc21e 100644
  var webRegistered bool
  
 diff --git a/internal/home/config.go b/internal/home/config.go
-index 3465c26f..80871665 100644
+index 6ecb4ccb..970cab1c 100644
 --- a/internal/home/config.go
 +++ b/internal/home/config.go
-@@ -168,19 +168,19 @@ var config = &configuration{
+@@ -166,19 +166,19 @@ var config = &configuration{
  	BindPort:     3000,
  	BetaBindPort: 0,
  	BindHost:     net.IP{0, 0, 0, 0},
@@ -83,7 +83,7 @@ index 3465c26f..80871665 100644
  			FastestTimeout: timeutil.Duration{
  				Duration: fastip.DefaultPingWaitTimeout,
  			},
-@@ -191,10 +191,10 @@ var config = &configuration{
+@@ -189,10 +189,10 @@ var config = &configuration{
  			// we introduced a default limit due to this:
  			// https://github.com/AdguardTeam/AdGuardHome/issues/2015#issuecomment-674041912
  			// was later increased to 300 due to https://github.com/AdguardTeam/AdGuardHome/issues/2257
@@ -96,11 +96,9 @@ index 3465c26f..80871665 100644
 +		FiltersUpdateIntervalHours: 1,
  		UpstreamTimeout:            timeutil.Duration{Duration: dnsforward.DefaultTimeout},
  		ResolveClients:             true,
+ 		UsePrivateRDNS:             true,
 @@ -206,11 +206,11 @@ var config = &configuration{
- 		PortDNSOverQUIC: defaultPortQUIC,
- 	},
-  DHCP: &dhcpd.ServerConfig{
-		 LocalDomainName: "lan",
+ 		LocalDomainName: "lan",
  	},
  	logSettings: logSettings{
 -		LogCompress:   false,
@@ -144,6 +142,7 @@ index 3465c26f..80871665 100644
  	config.Filters = defaultFilters()
  
  	config.DHCP.Conf4.LeaseDuration = dhcpd.DefaultDHCPLeaseTTL
+
 diff --git a/internal/home/dns.go b/internal/home/dns.go
 index 4b120581..78d3b9dc 100644
 --- a/internal/home/dns.go
