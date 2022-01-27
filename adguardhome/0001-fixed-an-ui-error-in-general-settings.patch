@@ -1,7 +1,7 @@
-From 7f0d610b34466057ea798ec6217e9c4aa80035f7 Mon Sep 17 00:00:00 2001
+From 345c454eb1fe5dba14703165a61b79087c9e5850 Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Thu, 29 Jul 2021 20:37:44 +0800
-Subject: [PATCH] Fix an UI error in "General Settings"
+Date: Thu, 27 Jan 2022 20:12:05 +0800
+Subject: [PATCH] Sync files from official repo.
 
 ---
  client/src/components/ui/Checkbox.js | 2 +-
@@ -20,5 +20,6 @@ index ce5b990a..a96dc371 100644
                      <span className="checkbox__label-title">{ t(title) }</span>
                      <span className="checkbox__label-subtitle" dangerouslySetInnerHTML={{ __html: t(subtitle) }}/>
                      </span>
---
-2.32.0
+-- 
+2.35.0
+
