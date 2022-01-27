@@ -1,6 +1,6 @@
-From aae6e4d79c971f6b4615f8e7f122de5e49be541b Mon Sep 17 00:00:00 2001
+From 166469903d93ac31fce1043fa0a21ac70801a31e Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Thu, 25 Nov 2021 22:45:39 +0800
+Date: Thu, 27 Jan 2022 20:13:20 +0800
 Subject: [PATCH] Change the default configuration template
 
 ---
@@ -12,10 +12,10 @@ Subject: [PATCH] Change the default configuration template
  5 files changed, 30 insertions(+), 33 deletions(-)
 
 diff --git a/internal/dhcpd/http.go b/internal/dhcpd/http.go
-index e016dee8..b177bbb3 100644
+index e340addb..b5026bb2 100644
 --- a/internal/dhcpd/http.go
 +++ b/internal/dhcpd/http.go
-@@ -537,7 +537,7 @@ func (s *Server) handleDHCPRemoveStaticLease(w http.ResponseWriter, r *http.Requ
+@@ -557,7 +557,7 @@ func (s *Server) handleDHCPRemoveStaticLease(w http.ResponseWriter, r *http.Requ
  
  const (
  	// DefaultDHCPLeaseTTL is the default time-to-live for leases.
@@ -25,7 +25,7 @@ index e016dee8..b177bbb3 100644
  	DefaultDHCPTimeoutICMP = 1000
  )
 diff --git a/internal/dnsforward/dnsforward.go b/internal/dnsforward/dnsforward.go
-index a62a6614..6bfdc21e 100644
+index fcd438e3..2ca0dae2 100644
 --- a/internal/dnsforward/dnsforward.go
 +++ b/internal/dnsforward/dnsforward.go
 @@ -26,7 +26,7 @@ import (
@@ -142,12 +142,11 @@ index 6ecb4ccb..970cab1c 100644
  	config.Filters = defaultFilters()
  
  	config.DHCP.Conf4.LeaseDuration = dhcpd.DefaultDHCPLeaseTTL
-
 diff --git a/internal/home/dns.go b/internal/home/dns.go
-index 4b120581..78d3b9dc 100644
+index 4278a321..c5b9345e 100644
 --- a/internal/home/dns.go
 +++ b/internal/home/dns.go
-@@ -24,7 +24,7 @@ const (
+@@ -25,7 +25,7 @@ const (
  	defaultPortDNS   = 53
  	defaultPortHTTP  = 80
  	defaultPortHTTPS = 443
@@ -157,7 +156,7 @@ index 4b120581..78d3b9dc 100644
  )
  
 diff --git a/internal/home/filter.go b/internal/home/filter.go
-index 74f85356..5c122b73 100644
+index e7688f3f..0ce3d7f3 100644
 --- a/internal/home/filter.go
 +++ b/internal/home/filter.go
 @@ -57,10 +57,7 @@ func (f *Filtering) Close() {
@@ -173,5 +172,5 @@ index 74f85356..5c122b73 100644
  
  // field ordering is important -- yaml fields will mirror ordering from here
 -- 
-2.34.0
+2.35.0
 
