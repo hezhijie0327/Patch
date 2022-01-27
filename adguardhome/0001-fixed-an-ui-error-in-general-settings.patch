@@ -1,7 +1,7 @@
 From 345c454eb1fe5dba14703165a61b79087c9e5850 Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
 Date: Thu, 27 Jan 2022 20:12:05 +0800
-Subject: [PATCH] Sync files from official repo.
+Subject: [PATCH] Fix an UI error in "General Settings"
 
 ---
  client/src/components/ui/Checkbox.js | 2 +-
