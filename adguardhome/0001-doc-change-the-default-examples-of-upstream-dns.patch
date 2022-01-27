@@ -1,6 +1,6 @@
-From eaca5223412faf81c24ac0adfad1f295437ed4ea Mon Sep 17 00:00:00 2001
+From 2da69745f8857a79b030564f5b92f6df45ea2e22 Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Thu, 29 Jul 2021 20:36:13 +0800
+Date: Thu, 27 Jan 2022 20:09:35 +0800
 Subject: [PATCH] Change the default examples of upstream DNS
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Change the default examples of upstream DNS
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/client/src/components/Settings/Dns/Upstream/Examples.js b/client/src/components/Settings/Dns/Upstream/Examples.js
-index 4fd59ad1..19357f86 100644
+index 4fd59ad1..269c6aec 100644
 --- a/client/src/components/Settings/Dns/Upstream/Examples.js
 +++ b/client/src/components/Settings/Dns/Upstream/Examples.js
 @@ -8,10 +8,10 @@ const Examples = (props) => (
@@ -69,5 +69,5 @@ index 4fd59ad1..19357f86 100644
                  <span>
                      <Trans>example_upstream_comment</Trans>
                  </span>
---
-2.32.0
+-- 
+2.35.0
