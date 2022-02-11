@@ -8,19 +8,19 @@ Subject: [PATCH] Change the default examples of upstream DNS
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/client/src/components/Settings/Dns/Upstream/Examples.js b/client/src/components/Settings/Dns/Upstream/Examples.js
-index 4fd59ad1..269c6aec 100644
+index 2f145b3a..dfdd6cf3 100644
 --- a/client/src/components/Settings/Dns/Upstream/Examples.js
 +++ b/client/src/components/Settings/Dns/Upstream/Examples.js
 @@ -8,10 +8,10 @@ const Examples = (props) => (
          <Trans>examples_title</Trans>:
          <ol className="leading-loose">
              <li>
--                <code>94.140.14.140</code> - {props.t('example_upstream_regular')}
-+                <code>[223.5.5.5]:53</code> - {props.t('example_upstream_regular')}
+-                <code>94.140.14.140</code>: {props.t('example_upstream_regular')}
++                <code>[223.5.5.5]:53</code>: {props.t('example_upstream_regular')}
              </li>
              <li>
--                <code>tls://dns-unfiltered.adguard.com</code> –&nbsp;
-+                <code>tls://dns.alidns.com:853</code> –&nbsp;
+-                <code>tls://dns-unfiltered.adguard.com</code>:
++                <code>tls://dns.alidns.com:853</code>:
                  <span>
                      <Trans
                          components={[
@@ -28,8 +28,8 @@ index 4fd59ad1..269c6aec 100644
                  </span>
              </li>
              <li>
--                <code>https://dns-unfiltered.adguard.com/dns-query</code> –&nbsp;
-+                <code>https://dns.alidns.com:443/dns-query</code> –&nbsp;
+-                <code>https://dns-unfiltered.adguard.com/dns-query</code>:
++                <code>https://dns.alidns.com:443/dns-query</code>:
                  <span>
                      <Trans
                          components={[
@@ -37,37 +37,37 @@ index 4fd59ad1..269c6aec 100644
                  </span>
              </li>
              <li>
--                <code>quic://dns-unfiltered.adguard.com:784</code> –&nbsp;
-+                <code>quic://dns.alidns.com:8853</code> –&nbsp;
+-                <code>quic://dns-unfiltered.adguard.com:784</code>:
++                <code>quic://dns.alidns.com:8853</code>:
                  <span>
                      <Trans
                          components={[
-@@ -70,7 +70,7 @@ const Examples = (props) => (
+@@ -68,7 +68,7 @@ const Examples = (props) => (
                  </span>
              </li>
              <li>
--                <code>tcp://94.140.14.140</code> – <Trans>example_upstream_tcp</Trans>
-+                <code>tcp://[223.5.5.5]:53</code> – <Trans>example_upstream_tcp</Trans>
+-                <code>tcp://94.140.14.140</code>: <Trans>example_upstream_tcp</Trans>
++                <code>tcp://[223.5.5.5]:53</code>: <Trans>example_upstream_tcp</Trans>
              </li>
              <li>
-                 <code>sdns://...</code> –&nbsp;
-@@ -108,7 +108,7 @@ const Examples = (props) => (
+                 <code>sdns://...</code>:
+@@ -106,7 +106,7 @@ const Examples = (props) => (
                  </span>
              </li>
              <li>
--                <code>[/example.local/]94.140.14.140</code> –&nbsp;
-+                <code>[/example.local/]https://dns.alidns.com:443/dns-query</code> –&nbsp;
+-                <code>[/example.local/]94.140.14.140</code>:
++                <code>[/example.local/]https://dns.alidns.com:443/dns-query</code>:
                  <span>
                      <Trans
                          components={[
-@@ -127,7 +127,7 @@ const Examples = (props) => (
+@@ -125,7 +125,7 @@ const Examples = (props) => (
                  </span>
              </li>
              <li>
--                <code>{COMMENT_LINE_DEFAULT_TOKEN} comment</code> –&nbsp;
-+                <code>{COMMENT_LINE_DEFAULT_TOKEN} 在此处添加注释</code> –&nbsp;
+-                <code>{COMMENT_LINE_DEFAULT_TOKEN} comment</code>:
++                <code>{COMMENT_LINE_DEFAULT_TOKEN} 在此处添加注释</code>:
                  <span>
                      <Trans>example_upstream_comment</Trans>
                  </span>
 -- 
-2.35.0
+2.35.1
