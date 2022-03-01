@@ -28,7 +28,7 @@
         "libssh2": "https://www.libssh2.org/download/libssh2-1.10.0.tar.gz",
         "libuv": "https://dist.libuv.org/dist/v1.43.0/libuv-v1.43.0.tar.gz",
         "openssl": "https://www.openssl.org/source/openssl-1.1.1m.tar.gz",
-        "sqlite": "https://sqlite.org/2022/sqlite-autoconf-3370200.tar.gz",
+        "sqlite": "https://sqlite.org/2022/sqlite-autoconf-3380000.tar.gz",
         "zlib": "https://zlib.net/zlib-1.2.11.tar.gz"
       },
       "version": {
@@ -38,7 +38,7 @@
         "libssh2": "1.10.0",
         "libuv": "1.43.0",
         "openssl": "1.1.1m",
-        "sqlite": "3.37.2",
+        "sqlite": "3.38.0",
         "zlib": "1.2.11"
       }
     },
