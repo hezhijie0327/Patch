@@ -1,14 +1,14 @@
-From eee7e3a2b0e3146fdfc58344815aab9a6fac83fb Mon Sep 17 00:00:00 2001
+From 412d22a278601bf2eb8de1cac5b875b1e0a392eb Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Wed, 2 Mar 2022 20:50:34 +0800
+Date: Wed, 2 Mar 2022 22:43:06 +0800
 Subject: [PATCH] Change the default examples of upstream DNS
 
 ---
- .../components/Settings/Dns/Upstream/Examples.js | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ .../Settings/Dns/Upstream/Examples.js          | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/client/src/components/Settings/Dns/Upstream/Examples.js b/client/src/components/Settings/Dns/Upstream/Examples.js
-index b4e0ce09..d9e435aa 100644
+index b4e0ce09..21e27573 100644
 --- a/client/src/components/Settings/Dns/Upstream/Examples.js
 +++ b/client/src/components/Settings/Dns/Upstream/Examples.js
 @@ -8,19 +8,19 @@ const Examples = (props) => (
@@ -63,5 +63,15 @@ index b4e0ce09..d9e435aa 100644
                  <span>
                      <Trans
                          components={[
---
+@@ -131,7 +131,7 @@ const Examples = (props) => (
+                 </span>
+             </li>
+             <li>
+-                <code>{COMMENT_LINE_DEFAULT_TOKEN} comment</code>:
++                <code>{ COMMENT_LINE_DEFAULT_TOKEN } 在此处添加注释</code>:
+                 <span>
+                     <Trans>example_upstream_comment</Trans>
+                 </span>
+-- 
 2.35.1
+
