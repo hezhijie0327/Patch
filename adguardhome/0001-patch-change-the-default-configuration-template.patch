@@ -16,7 +16,7 @@ index e340addb..b5026bb2 100644
 --- a/internal/dhcpd/http.go
 +++ b/internal/dhcpd/http.go
 @@ -557,7 +557,7 @@ func (s *Server) handleDHCPRemoveStaticLease(w http.ResponseWriter, r *http.Requ
-
+ 
  const (
  	// DefaultDHCPLeaseTTL is the default time-to-live for leases.
 -	DefaultDHCPLeaseTTL = uint32(timeutil.Day / time.Second)
@@ -30,29 +30,29 @@ index fcd438e3..2ca0dae2 100644
 +++ b/internal/dnsforward/dnsforward.go
 @@ -26,7 +26,7 @@ import (
  )
-
+ 
  // DefaultTimeout is the default upstream timeout
 -const DefaultTimeout = 10 * time.Second
 +const DefaultTimeout = 1 * time.Second
-
+ 
  // defaultClientIDCacheCount is the default count of items in the LRU ClientID
  // cache.  The assumption here is that there won't be more than this many
 @@ -39,12 +39,12 @@ const (
  )
-
+ 
  var defaultDNS = []string{
 -	"https://dns10.quad9.net/dns-query",
 +	"https://dns.alidns.com:443/dns-query",
  }
 -var defaultBootstrap = []string{"9.9.9.10", "149.112.112.10", "2620:fe::10", "2620:fe::fe:10"}
 +var defaultBootstrap = []string{"tls://[223.5.5.5]:853", "tls://[223.6.6.6]:853", "tls://[2400:3200::1]:853", "tls://[2400:3200:baba::1]:853"}
-
+ 
  // Often requested by all kinds of DNS probes
 -var defaultBlockedHosts = []string{"version.bind", "id.server", "hostname.bind"}
 +var defaultBlockedHosts = []string{"|hostname.bind^", "|id.server^", "|version.bind^", "|version.server^"}
-
+ 
  var webRegistered bool
-
+ 
 diff --git a/internal/home/config.go b/internal/home/config.go
 index 6ecb4ccb..970cab1c 100644
 --- a/internal/home/config.go
@@ -115,12 +115,12 @@ index 6ecb4ccb..970cab1c 100644
  	OSConfig:      &osConfig{},
  	SchemaVersion: currentSchemaVersion,
 @@ -218,18 +218,18 @@ var config = &configuration{
-
+ 
  // initConfig initializes default configuration for the current OS&ARCH
  func initConfig() {
 -	config.WebSessionTTLHours = 30 * 24
 +	config.WebSessionTTLHours = 1
-
+ 
  	config.DNS.QueryLogEnabled = true
  	config.DNS.QueryLogFileEnabled = true
 -	config.DNS.QueryLogInterval = timeutil.Duration{Duration: 90 * timeutil.Day}
@@ -140,7 +140,7 @@ index 6ecb4ccb..970cab1c 100644
 +	config.DNS.DnsfilterConf.ParentalCacheSize = 64 * 1024 * 1024
 +	config.DNS.DnsfilterConf.CacheTime = 3600
  	config.Filters = defaultFilters()
-
+ 
  	config.DHCP.Conf4.LeaseDuration = dhcpd.DefaultDHCPLeaseTTL
 diff --git a/internal/home/dns.go b/internal/home/dns.go
 index 4278a321..c5b9345e 100644
@@ -154,14 +154,14 @@ index 4278a321..c5b9345e 100644
 +	defaultPortQUIC  = 8853
  	defaultPortTLS   = 853
  )
-
+ 
 diff --git a/internal/home/filter.go b/internal/home/filter.go
 index e7688f3f..0ce3d7f3 100644
 --- a/internal/home/filter.go
 +++ b/internal/home/filter.go
 @@ -57,10 +57,7 @@ func (f *Filtering) Close() {
  }
-
+ 
  func defaultFilters() []filter {
 -	return []filter{
 -		{Filter: filtering.Filter{ID: 1}, Enabled: true, URL: "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt", Name: "AdGuard DNS filter"},
@@ -169,7 +169,8 @@ index e7688f3f..0ce3d7f3 100644
 -	}
 +	return []filter{}
  }
-
+ 
  // field ordering is important -- yaml fields will mirror ordering from here
---
+-- 
 2.35.0
+
