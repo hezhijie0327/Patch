@@ -286,6 +286,8 @@
   "example_upstream_reserved": "为<0>特定域</0>指定上游 DNS 服务器",
   "example_upstream_sdns": "基于 <0>DNS Stamps</0> 格式的 DNS 服务器（<2>DNS-over-HTTPS</2> 或 <1>DNSCrypt</1>）",
   "example_upstream_tcp": "基于 TCP 协议的 DNS 服务器（DNS-over-TCP）",
+  "example_upstream_tcp_hostname": "基于 TCP 协议的 DNS 服务器（DNS-over-TCP，域名格式）",
+  "example_upstream_udp": "基于 UDP 协议的 DNS 服务器（DNS-over-UDP，域名格式）",
   "examples_title": "范例",
   "faq": "常见问题",
   "fastest_addr": "优选查询模式",

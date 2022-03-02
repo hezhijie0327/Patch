@@ -1,22 +1,34 @@
-From 2da69745f8857a79b030564f5b92f6df45ea2e22 Mon Sep 17 00:00:00 2001
+From eee7e3a2b0e3146fdfc58344815aab9a6fac83fb Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Thu, 27 Jan 2022 20:09:35 +0800
+Date: Wed, 2 Mar 2022 20:50:34 +0800
 Subject: [PATCH] Change the default examples of upstream DNS
 
 ---
- .../components/Settings/Dns/Upstream/Examples.js   | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ .../components/Settings/Dns/Upstream/Examples.js | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/client/src/components/Settings/Dns/Upstream/Examples.js b/client/src/components/Settings/Dns/Upstream/Examples.js
-index 2f145b3a..dfdd6cf3 100644
+index b4e0ce09..d9e435aa 100644
 --- a/client/src/components/Settings/Dns/Upstream/Examples.js
 +++ b/client/src/components/Settings/Dns/Upstream/Examples.js
-@@ -8,10 +8,10 @@ const Examples = (props) => (
+@@ -8,19 +8,19 @@ const Examples = (props) => (
          <Trans>examples_title</Trans>:
          <ol className="leading-loose">
              <li>
 -                <code>94.140.14.140</code>: {props.t('example_upstream_regular')}
-+                <code>[223.5.5.5]:53</code>: {props.t('example_upstream_regular')}
++                <code>udp://[223.5.5.5]:53</code>: {props.t('example_upstream_regular')}
+             </li>
+             <li>
+-                <code>udp://dns-unfiltered.adguard.com</code>: <Trans>example_upstream_udp</Trans>
++                <code>udp://dns.alidns.com:53</code>: <Trans>example_upstream_udp</Trans>
+             </li>
+             <li>
+-                <code>tcp://94.140.14.140</code>: <Trans>example_upstream_tcp</Trans>
++                <code>tcp://[223.5.5.5]:53</code>: <Trans>example_upstream_tcp</Trans>
+             </li>
+             <li>
+-                <code>tcp://dns-unfiltered.adguard.com</code>: <Trans>example_upstream_tcp_hostname</Trans>
++                <code>tcp://dns.alidns.com:53</code>: <Trans>example_upstream_tcp_hostname</Trans>
              </li>
              <li>
 -                <code>tls://dns-unfiltered.adguard.com</code>:
@@ -24,7 +36,7 @@ index 2f145b3a..dfdd6cf3 100644
                  <span>
                      <Trans
                          components={[
-@@ -30,7 +30,7 @@ const Examples = (props) => (
+@@ -39,7 +39,7 @@ const Examples = (props) => (
                  </span>
              </li>
              <li>
@@ -33,25 +45,16 @@ index 2f145b3a..dfdd6cf3 100644
                  <span>
                      <Trans
                          components={[
-@@ -49,7 +49,7 @@ const Examples = (props) => (
+@@ -58,7 +58,7 @@ const Examples = (props) => (
                  </span>
              </li>
              <li>
 -                <code>quic://dns-unfiltered.adguard.com:784</code>:
-+                <code>quic://dns.alidns.com:8853</code>:
++                <code>quic://dns.alidns.com:853</code>:
                  <span>
                      <Trans
                          components={[
-@@ -68,7 +68,7 @@ const Examples = (props) => (
-                 </span>
-             </li>
-             <li>
--                <code>tcp://94.140.14.140</code>: <Trans>example_upstream_tcp</Trans>
-+                <code>tcp://[223.5.5.5]:53</code>: <Trans>example_upstream_tcp</Trans>
-             </li>
-             <li>
-                 <code>sdns://...</code>:
-@@ -106,7 +106,7 @@ const Examples = (props) => (
+@@ -112,7 +112,7 @@ const Examples = (props) => (
                  </span>
              </li>
              <li>
@@ -60,14 +63,5 @@ index 2f145b3a..dfdd6cf3 100644
                  <span>
                      <Trans
                          components={[
-@@ -125,7 +125,7 @@ const Examples = (props) => (
-                 </span>
-             </li>
-             <li>
--                <code>{COMMENT_LINE_DEFAULT_TOKEN} comment</code>:
-+                <code>{COMMENT_LINE_DEFAULT_TOKEN} 在此处添加注释</code>:
-                 <span>
-                     <Trans>example_upstream_comment</Trans>
-                 </span>
--- 
+--
 2.35.1
