@@ -16,7 +16,7 @@ index a52cb8c8..1a595d54 100644
  
  public:
 -  ByteArrayDiskWriter(size_t maxLength = 5_m);
-+  ByteArrayDiskWriter(size_t maxLength = 64_m);
++  ByteArrayDiskWriter(size_t maxLength = 125_m);
    virtual ~ByteArrayDiskWriter();
  
    virtual void initAndOpenFile(int64_t totalLength = 0) CXX11_OVERRIDE;
