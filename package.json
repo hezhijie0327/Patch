@@ -45,12 +45,5 @@
     "patch": "https://github.com/hezhijie0327/Patch.git",
     "source": "https://github.com/aria2/aria2.git",
     "version": "1.36.0"
-  },
-  "upx": {
-    "url": {
-      "aarch64": "https://github.com/upx/upx/releases/download/v3.96/upx-3.96-arm64_linux.tar.xz",
-      "x86_64": "https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz"
-    },
-    "version": "3.96"
   }
 }
