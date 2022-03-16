@@ -1,18 +1,20 @@
 {
   "adguardhome": {
     "binary": {
-      "aarch64": {
-        "golang": "https://golang.org/dl/go1.17.8.linux-arm64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-arm64.tar.gz"
-      },
-      "x86_64": {
-        "golang": "https://golang.org/dl/go1.17.8.linux-amd64.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.gz"
+      "source": {
+        "aarch64": {
+          "golang": "https://golang.org/dl/go1.18.linux-arm64.tar.gz",
+          "nodejs": "https://nodejs.org/dist/v16.14.1/node-v16.14.1-linux-arm64.tar.gz"
+        },
+        "x86_64": {
+          "golang": "https://golang.org/dl/go1.18.linux-amd64.tar.gz",
+          "nodejs": "https://nodejs.org/dist/v16.14.1/node-v16.14.1-linux-x64.tar.gz"
+        }
       },
       "version": {
-        "golang": "1.17.8",
-        "nodejs": "16.14.0",
-        "npm": "8.3.1"
+        "golang": "1.18",
+        "nodejs": "16.14.1",
+        "npm": "8.5.0"
       }
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
@@ -27,7 +29,7 @@
         "gperftools": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.9.1/gperftools-2.9.1.tar.gz",
         "libssh2": "https://www.libssh2.org/download/libssh2-1.10.0.tar.gz",
         "libuv": "https://dist.libuv.org/dist/v1.44.1/libuv-v1.44.1.tar.gz",
-        "openssl": "https://www.openssl.org/source/openssl-1.1.1m.tar.gz",
+        "openssl": "https://www.openssl.org/source/openssl-1.1.1n.tar.gz",
         "sqlite": "https://sqlite.org/2022/sqlite-autoconf-3380100.tar.gz",
         "zlib": "https://zlib.net/zlib-1.2.11.tar.gz"
       },
@@ -37,7 +39,7 @@
         "gperftools": "2.9.1",
         "libssh2": "1.10.0",
         "libuv": "1.44.1",
-        "openssl": "1.1.1m",
+        "openssl": "1.1.1n",
         "sqlite": "3.38.1",
         "zlib": "1.2.11"
       }
