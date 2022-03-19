@@ -7,12 +7,12 @@
       },
       "version": {
         "golang": "1.18",
-        "nodejs": "16.14.1"
+        "nodejs": "16.14.2"
       }
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
     "source": "https://github.com/AdguardTeam/AdGuardHome.git",
-    "version": "0.108.0"
+    "version": "0.107.5"
   },
   "aria2c": {
     "lib": {
