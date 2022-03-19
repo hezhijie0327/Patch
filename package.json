@@ -1,6 +1,10 @@
 {
   "adguardhome": {
     "binary": {
+      "git":{
+          "golang": "https://api.github.com/repos/golang/go/tarball",
+          "nodejs": "https://api.github.com/repos/nodejs/node/tarball"
+      },
       "source": {
         "golang": "https://golang.org/dl/go1.18.linux-{GOLANG_ARCH}.tar.gz",
         "nodejs": "https://nodejs.org/dist/v16.14.2/node-v16.14.2-linux-{NODEJS_ARCH}.tar.gz"
@@ -17,6 +21,16 @@
   },
   "aria2c": {
     "lib": {
+      "git": {
+        "c_ares": "https://api.github.com/repos/c-ares/c-ares/tarball",
+        "expat": "https://api.github.com/repos/libexpat/libexpat/tarball",
+        "gperftools": "https://api.github.com/repos/gperftools/gperftools/tarball",
+        "libssh2": "https://api.github.com/repos/libssh2/libssh2/tarball",
+        "libuv": "https://api.github.com/repos/libuv/libuv/tarball",
+        "openssl": "https://api.github.com/repos/openssl/openssl/tarball",
+        "sqlite": "https://api.github.com/repos/sqlite/sqlite/tarball",
+        "zlib_ng": "https://api.github.com/repos/zlib-ng/zlib-ng/tarball"
+      },
       "source": {
         "c_ares": "https://c-ares.org/download/c-ares-1.18.1.tar.gz",
         "expat": "https://github.com/libexpat/libexpat/releases/download/R_2_4_7/expat-2.4.7.tar.bz2",
