@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Current Version: 1.0.3
+# Current Version: 1.0.4
 
 ## How to get and use?
 # git clone "https://github.com/hezhijie0327/Patch.git" && bash ./Patch/release.sh
@@ -60,7 +60,7 @@ function GenerateReplacements() {
     )
     SED_REPLACEMENT="" && for replacement_list_task in "${!replacement_list[@]}"; do
         SED_REPLACEMENT="${SED_REPLACEMENT}${replacement_list[$replacement_list_task]};"
-    done && curl -s --connect-timeout 15 "https://raw.githubusercontent.com/hezhijie0327/Patch/dev/template.json" | sed "${SED_REPLACEMENT}" > "./package.json" && cat "./package.json"
+    done && curl -s --connect-timeout 15 "https://raw.githubusercontent.com/hezhijie0327/Patch/main/template.json" | sed "${SED_REPLACEMENT}" > "./package.json" && cat "./package.json"
 }
 
 ## Process
