@@ -5,10 +5,6 @@
         "golang": "https://golang.org/dl/go1.18.linux-{GOLANG_ARCH}.tar.gz",
         "nodejs": "https://nodejs.org/dist/v16.14.2/node-v16.14.2-linux-{NODEJS_ARCH}.tar.gz"
       },
-      "tag": {
-        "golang": "https://api.github.com/repos/golang/go/git/matching-refs/tags",
-        "nodejs": "https://api.github.com/repos/nodejs/node/git/matching-refs/tags"
-      },
       "version": {
         "golang": "1.18",
         "nodejs": "16.14.1",
@@ -30,16 +26,6 @@
         "openssl": "https://www.openssl.org/source/openssl-3.0.2.tar.gz",
         "sqlite": "https://sqlite.org/2022/sqlite-autoconf-3380100.tar.gz",
         "zlib_ng": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz"
-      },
-      "tag": {
-        "c_ares": "https://api.github.com/repos/c-ares/c-ares/git/matching-refs/tags",
-        "expat": "https://api.github.com/repos/libexpat/libexpat/git/matching-refs/tags",
-        "gperftools": "https://api.github.com/repos/gperftools/gperftools/git/matching-refs/tags",
-        "libssh2": "https://api.github.com/repos/libssh2/libssh2/git/matching-refs/tags",
-        "libuv": "https://api.github.com/repos/libuv/libuv/git/matching-refs/tags",
-        "openssl": "https://api.github.com/repos/openssl/openssl/git/matching-refs/tags",
-        "sqlite": "https://api.github.com/repos/sqlite/sqlite/git/matching-refs/tags",
-        "zlib_ng": "https://api.github.com/repos/zlib-ng/zlib-ng/git/matching-refs/tags"
       },
       "version": {
         "c_ares": "1.18.1",
