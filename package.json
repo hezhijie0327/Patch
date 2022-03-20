@@ -17,28 +17,28 @@
   "aria2c": {
     "lib": {
       "source": {
-        "c_ares": "https://c-ares.org/download/c-ares-1.18.1.tar.gz",
-        "expat": "https://github.com/libexpat/libexpat/releases/download/R_2_4_7/expat-2.4.7.tar.bz2",
-        "gperftools": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.9.1/gperftools-2.9.1.tar.gz",
-        "libssh2": "https://www.libssh2.org/download/libssh2-1.10.0.tar.gz",
-        "libuv": "https://dist.libuv.org/dist/v1.44.1/libuv-v1.44.1.tar.gz",
-        "openssl": "https://www.openssl.org/source/openssl-3.0.2.tar.gz",
-        "sqlite": "https://sqlite.org/2022/sqlite-autoconf-3380100.tar.gz",
-        "zlib_ng": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz"
+        "c_ares": "https://c-ares.org/download/c-ares-null.tar.gz",
+        "expat": "https://github.com/libexpat/libexpat/releases/download/R_null/expat-null.tar.bz2",
+        "gperftools": "https://github.com/gperftools/gperftools/releases/download/gperftools-null/gperftools-null.tar.gz",
+        "libssh2": "https://www.libssh2.org/download/libssh2-null.tar.gz",
+        "libuv": "https://dist.libuv.org/dist/vnull/libuv-vnull.tar.gz",
+        "openssl": "https://www.openssl.org/source/openssl-null.tar.gz",
+        "sqlite": "https://sqlite.org/null/sqlite-autoconf-nullnull0null00.tar.gz",
+        "zlib_ng": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/null.tar.gz"
       },
       "version": {
-        "c_ares": "1.18.1",
-        "expat": "2.4.7",
-        "gperftools": "2.9.1",
-        "libssh2": "1.10.0",
-        "libuv": "1.44.1",
-        "openssl": "3.0.2",
-        "sqlite": "3.38.1",
-        "zlib_ng": "2.0.6"
+        "c_ares": "null",
+        "expat": "null",
+        "gperftools": "null",
+        "libssh2": "null",
+        "libuv": "null",
+        "openssl": "null",
+        "sqlite": "null",
+        "zlib_ng": "null"
       }
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
     "source": "https://github.com/aria2/aria2.git",
-    "version": "1.36.0"
+    "version": "null"
   }
 }
