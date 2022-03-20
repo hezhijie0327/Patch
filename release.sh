@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Current Version: 1.0.7
+# Current Version: 1.0.8
 
 ## How to get and use?
 # git clone "https://github.com/hezhijie0327/Patch.git" && bash ./Patch/release.sh
@@ -52,7 +52,7 @@ function GetAdGuardHomePackageVersion() {
             NODEJS_VERSION=${NODEJS_CURRENT}
         fi
     }
-    GetAdGuardHomeCurrentPackageVersion && SelectAdGuardHomePackageVersion
+    GetAdGuardHomeLatestPackageVersion && SelectAdGuardHomePackageVersion
 }
 # Get aria2 Package Version
 function Getaria2PackageVersion() {
@@ -130,7 +130,7 @@ function Getaria2PackageVersion() {
             ZLIB_NG_VERSION=${ZLIB_NG_CURRENT}
         fi
     }
-    Getaria2CurrentPackageVersion && Selectaria2PackageVersion
+    Getaria2LatestPackageVersion && Selectaria2PackageVersion
 }
 # Generate Replacements
 function GenerateReplacements() {
