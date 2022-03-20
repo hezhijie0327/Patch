@@ -2,43 +2,43 @@
   "adguardhome": {
     "binary": {
       "source": {
-        "golang": "https://golang.org/dl/go.linux-{GOLANG_ARCH}.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v/node-v-linux-{NODEJS_ARCH}.tar.gz"
+        "golang": "https://golang.org/dl/go1.18.linux-{GOLANG_ARCH}.tar.gz",
+        "nodejs": "https://nodejs.org/dist/v16.14.2/node-v16.14.2-linux-{NODEJS_ARCH}.tar.gz"
       },
       "version": {
-        "golang": "",
-        "nodejs": ""
+        "golang": "1.18",
+        "nodejs": "16.14.2"
       }
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
     "source": "https://github.com/AdguardTeam/AdGuardHome.git",
-    "version": ""
+    "version": "0.107.5"
   },
   "aria2c": {
     "lib": {
       "source": {
-        "c_ares": "https://c-ares.org/download/c-ares-.tar.gz",
-        "expat": "https://github.com/libexpat/libexpat/releases/download/R_/expat-.tar.bz2",
-        "gperftools": "https://github.com/gperftools/gperftools/releases/download/gperftools-/gperftools-.tar.gz",
-        "libssh2": "https://www.libssh2.org/download/libssh2-.tar.gz",
-        "libuv": "https://dist.libuv.org/dist/v/libuv-v.tar.gz",
-        "openssl": "https://www.openssl.org/source/openssl-.tar.gz",
-        "sqlite": "https://sqlite.org/2022/sqlite-autoconf-000.tar.gz",
-        "zlib_ng": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/.tar.gz"
+        "c_ares": "https://c-ares.org/download/c-ares-1.18.1.tar.gz",
+        "expat": "https://github.com/libexpat/libexpat/releases/download/R_2_4_7/expat-2.4.7.tar.bz2",
+        "gperftools": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.9.1/gperftools-2.9.1.tar.gz",
+        "libssh2": "https://www.libssh2.org/download/libssh2-1.10.0.tar.gz",
+        "libuv": "https://dist.libuv.org/dist/v1.44.1/libuv-v1.44.1.tar.gz",
+        "openssl": "https://www.openssl.org/source/openssl-3.0.2.tar.gz",
+        "sqlite": "https://sqlite.org/2022/sqlite-autoconf-3380100.tar.gz",
+        "zlib_ng": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz"
       },
       "version": {
-        "c_ares": "",
-        "expat": "",
-        "gperftools": "",
-        "libssh2": "",
-        "libuv": "",
-        "openssl": "",
-        "sqlite": "",
-        "zlib_ng": ""
+        "c_ares": "1.18.1",
+        "expat": "2.4.7",
+        "gperftools": "2.9.1",
+        "libssh2": "1.10.0",
+        "libuv": "1.44.1",
+        "openssl": "3.0.2",
+        "sqlite": "3.38.1",
+        "zlib_ng": "2.0.6"
       }
     },
     "patch": "https://github.com/hezhijie0327/Patch.git",
     "source": "https://github.com/aria2/aria2.git",
-    "version": ""
+    "version": "1.36.0"
   }
 }
