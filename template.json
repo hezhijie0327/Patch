@@ -1,44 +1,56 @@
 {
-  "adguardhome": {
-    "binary": {
-      "source": {
-        "golang": "https://golang.org/dl/go{GOLANG_VERSION}.linux-{GOLANG_ARCH}.tar.gz",
-        "nodejs": "https://nodejs.org/dist/v{NODEJS_VERSION}/node-v{NODEJS_VERSION}-linux-{NODEJS_ARCH}.tar.gz"
-      },
-      "version": {
-        "golang": "{GOLANG_VERSION}",
-        "nodejs": "{NODEJS_VERSION}"
-      }
+  "module": {
+    "c_ares": {
+      "source": "https://c-ares.org/download/c-ares-{C_ARES_VERSION}.tar.gz",
+      "version": "{C_ARES_VERSION}"
     },
-    "patch": "https://github.com/hezhijie0327/Patch.git",
-    "source": "https://github.com/AdguardTeam/AdGuardHome.git",
-    "version": "{ADGUARDHOME_VERSION}"
+    "expat": {
+      "source": "https://github.com/libexpat/libexpat/releases/download/R_{EXPAT_VERSION_}/expat-{EXPAT_VERSION}.tar.gz",
+      "version": "{EXPAT_VERSION}"
+    },
+    "golang": {
+      "source": "https://golang.org/dl/go{GOLANG_VERSION}.linux-{GOLANG_ARCH}.tar.gz",
+      "version": "{GOLANG_VERSION}"
+    },
+    "gperftools": {
+      "source": "https://github.com/gperftools/gperftools/releases/download/gperftools-{GPERFTOOLS_VERSION}/gperftools-{GPERFTOOLS_VERSION}.tar.gz",
+      "version": "{GPERFTOOLS_VERSION}"
+    },
+    "libssh2": {
+      "source": "https://www.libssh2.org/download/libssh2-{LIBSSH2_VERSION}.tar.gz",
+      "version": "{LIBSSH2_VERSION}"
+    },
+    "libuv": {
+      "source": "https://dist.libuv.org/dist/v{LIBUV_VERSION}/libuv-v{LIBUV_VERSION}.tar.gz",
+      "version": "{LIBUV_VERSION}"
+    },
+    "nodejs": {
+      "source": "https://nodejs.org/dist/v{NODEJS_VERSION}/node-v{NODEJS_VERSION}-linux-{NODEJS_ARCH}.tar.gz",
+      "version": "{NODEJS_VERSION}"
+    },
+    "openssl": {
+      "source": "https://www.openssl.org/source/openssl-{OPENSSL_VERSION}.tar.gz",
+      "version": "{OPENSSL_VERSION}"
+    },
+    "sqlite": {
+      "source": "https://sqlite.org/{SQLITE_YEAR}/sqlite-autoconf-{SQLITE_VERSION_}.tar.gz",
+      "version": "{SQLITE_VERSION}"
+    },
+    "zlib_ng": {
+      "source": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/{ZLIB_NG_VERSION}.tar.gz",
+      "version": "{ZLIB_NG_VERSION}"
+    }
   },
-  "aria2c": {
-    "lib": {
-      "source": {
-        "c_ares": "https://c-ares.org/download/c-ares-{C_ARES_VERSION}.tar.gz",
-        "expat": "https://github.com/libexpat/libexpat/releases/download/R_{EXPAT_VERSION_}/expat-{EXPAT_VERSION}.tar.gz",
-        "gperftools": "https://github.com/gperftools/gperftools/releases/download/gperftools-{GPERFTOOLS_VERSION}/gperftools-{GPERFTOOLS_VERSION}.tar.gz",
-        "libssh2": "https://www.libssh2.org/download/libssh2-{LIBSSH2_VERSION}.tar.gz",
-        "libuv": "https://dist.libuv.org/dist/v{LIBUV_VERSION}/libuv-v{LIBUV_VERSION}.tar.gz",
-        "openssl": "https://www.openssl.org/source/openssl-{OPENSSL_VERSION}.tar.gz",
-        "sqlite": "https://sqlite.org/{SQLITE_YEAR}/sqlite-autoconf-{SQLITE_VERSION_}.tar.gz",
-        "zlib_ng": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/{ZLIB_NG_VERSION}.tar.gz"
-      },
-      "version": {
-        "c_ares": "{C_ARES_VERSION}",
-        "expat": "{EXPAT_VERSION}",
-        "gperftools": "{GPERFTOOLS_VERSION}",
-        "libssh2": "{LIBSSH2_VERSION}",
-        "libuv": "{LIBUV_VERSION}",
-        "openssl": "{OPENSSL_VERSION}",
-        "sqlite": "{SQLITE_VERSION}",
-        "zlib_ng": "{ZLIB_NG_VERSION}"
-      }
+  "repo": {
+    "adguardhome": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/AdguardTeam/AdGuardHome.git",
+      "version": "{ADGUARDHOME_VERSION}"
     },
-    "patch": "https://github.com/hezhijie0327/Patch.git",
-    "source": "https://github.com/aria2/aria2.git",
-    "version": "{ARIA2_VERSION}"
+    "aria2c": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/aria2/aria2.git",
+      "version": "{ARIA2_VERSION}"
+    }
   }
 }
