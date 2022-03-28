@@ -5,8 +5,8 @@
       "version": "1.18.1"
     },
     "expat": {
-      "source": "https://github.com/libexpat/libexpat/releases/download/R_2_4_7/expat-2.4.7.tar.gz",
-      "version": "2.4.7"
+      "source": "https://github.com/libexpat/libexpat/releases/download/R_2_4_8/expat-2.4.8.tar.gz",
+      "version": "2.4.8"
     },
     "golang": {
       "source": "https://golang.org/dl/go1.18.linux-{GOLANG_ARCH}.tar.gz",
