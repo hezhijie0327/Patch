@@ -1,14 +1,14 @@
-From dbe727948f66eff0b9e268676d4bf166cb91e3be Mon Sep 17 00:00:00 2001
+From 655d369d1706f730d923a8acb84ad3671c8f94cd Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Thu, 31 Mar 2022 12:08:35 +0800
+Date: Thu, 31 Mar 2022 14:53:01 +0800
 Subject: [PATCH] Optimize BT tracker logic
 
 ---
  src/AnnounceList.cc          | 10 ++++++++++
  src/AnnounceList.h           |  1 +
  src/DefaultBtAnnounce.cc     | 16 +++++++++++-----
- src/TrackerWatcherCommand.cc | 13 ++++---------
- 4 files changed, 26 insertions(+), 14 deletions(-)
+ src/TrackerWatcherCommand.cc | 14 +++++---------
+ 4 files changed, 27 insertions(+), 14 deletions(-)
 
 diff --git a/src/AnnounceList.cc b/src/AnnounceList.cc
 index c60dcda..a5c01cf 100644
@@ -71,7 +71,7 @@ index 98d4ac0..8134519 100644
 
  bool DefaultBtAnnounce::isStoppedAnnounceReady()
 diff --git a/src/TrackerWatcherCommand.cc b/src/TrackerWatcherCommand.cc
-index 960a377..5074872 100644
+index 960a377..d029f84 100644
 --- a/src/TrackerWatcherCommand.cc
 +++ b/src/TrackerWatcherCommand.cc
 @@ -240,15 +240,11 @@ bool TrackerWatcherCommand::execute()
@@ -103,5 +103,13 @@ index 960a377..5074872 100644
      std::string uri = btAnnounce_->getAnnounceUrl();
      uri_split_result res;
      memset(&res, 0, sizeof(res));
+@@ -375,6 +370,7 @@ TrackerWatcherCommand::createHTTPAnnRequest(const std::string& uri)
+   // If backup tracker is available, try 2 times for each tracker
+   // and if they all fails, then try next one.
+   option->put(PREF_MAX_TRIES, "2");
++  option->put(PREF_RETRY_WAIT, option->get(PREF_RETRY_WAIT));
+   // TODO When dry-run mode becomes available in BitTorrent, set
+   // PREF_DRY_RUN=false too.
+   option->put(PREF_USE_HEAD, A2_V_FALSE);
 --
 2.35.1
