@@ -1,0 +1,107 @@
+From dbe727948f66eff0b9e268676d4bf166cb91e3be Mon Sep 17 00:00:00 2001
+From: Zhijie He <hezhijie0327@hotmail.com>
+Date: Thu, 31 Mar 2022 12:08:35 +0800
+Subject: [PATCH] Optimize BT tracker logic
+
+---
+ src/AnnounceList.cc          | 10 ++++++++++
+ src/AnnounceList.h           |  1 +
+ src/DefaultBtAnnounce.cc     | 16 +++++++++++-----
+ src/TrackerWatcherCommand.cc | 13 ++++---------
+ 4 files changed, 26 insertions(+), 14 deletions(-)
+
+diff --git a/src/AnnounceList.cc b/src/AnnounceList.cc
+index c60dcda..a5c01cf 100644
+--- a/src/AnnounceList.cc
++++ b/src/AnnounceList.cc
+@@ -254,6 +254,16 @@ bool AnnounceList::allTiersFailed() const
+   return currentTier_ == std::end(tiers_);
+ }
+
++int AnnounceList::currentTierLoc() const
++{
++  int loc = 0;
++  for (auto tier = std::begin(tiers_);tier != std::end(tiers_);tier++) {
++    if (currentTier_ == tier) {return loc;}
++    loc++;
++  }
++  return -1;
++}
++
+ void AnnounceList::resetTier() { resetIterator(); }
+
+ bool AnnounceList::currentTierAcceptsStoppedEvent() const
+diff --git a/src/AnnounceList.h b/src/AnnounceList.h
+index dd4e8f7..228f142 100644
+--- a/src/AnnounceList.h
++++ b/src/AnnounceList.h
+@@ -129,6 +129,7 @@ public:
+   void moveToCompletedAllowedTier();
+
+   bool allTiersFailed() const;
++  int currentTierLoc() const;
+
+   void resetTier();
+
+diff --git a/src/DefaultBtAnnounce.cc b/src/DefaultBtAnnounce.cc
+index 98d4ac0..8134519 100644
+--- a/src/DefaultBtAnnounce.cc
++++ b/src/DefaultBtAnnounce.cc
+@@ -78,11 +78,17 @@ DefaultBtAnnounce::~DefaultBtAnnounce() = default;
+
+ bool DefaultBtAnnounce::isDefaultAnnounceReady()
+ {
+-  return (trackers_ == 0 &&
+-          prevAnnounceTimer_.difference(global::wallclock()) >=
+-              (userDefinedInterval_.count() == 0 ? minInterval_
+-                                                 : userDefinedInterval_) &&
+-          !announceList_.allTiersFailed());
++  if (trackers_ != 0) {return false;}
++
++  if (announceList_.currentTierLoc() != 0) {return true;}
++
++  if (prevAnnounceTimer_.isZero()) {
++    A2_LOG_INFO("set prevAnnounceTimer_ to now");
++    prevAnnounceTimer_ = global::wallclock();
++    return false;
++  }
++
++  return (prevAnnounceTimer_.difference(global::wallclock()) >= (userDefinedInterval_.count() == 0 ? minInterval_ : userDefinedInterval_));
+ }
+
+ bool DefaultBtAnnounce::isStoppedAnnounceReady()
+diff --git a/src/TrackerWatcherCommand.cc b/src/TrackerWatcherCommand.cc
+index 960a377..5074872 100644
+--- a/src/TrackerWatcherCommand.cc
++++ b/src/TrackerWatcherCommand.cc
+@@ -240,15 +240,11 @@ bool TrackerWatcherCommand::execute()
+     // will get Segmentation fault.
+     if (trackerRequest_->success()) {
+       if (trackerRequest_->processResponse(btAnnounce_)) {
+-        btAnnounce_->announceSuccess();
+-        btAnnounce_->resetAnnounce();
+         addConnection();
+       }
+-      else {
+-        btAnnounce_->announceFailure();
+-        if (btAnnounce_->isAllAnnounceFailed()) {
+-          btAnnounce_->resetAnnounce();
+-        }
++      btAnnounce_->announceFailure();
++      if (btAnnounce_->isAllAnnounceFailed()) {
++        btAnnounce_->resetAnnounce();
+       }
+       trackerRequest_.reset();
+     }
+@@ -296,8 +292,7 @@ void TrackerWatcherCommand::addConnection()
+ std::unique_ptr<AnnRequest>
+ TrackerWatcherCommand::createAnnounce(DownloadEngine* e)
+ {
+-  while (!btAnnounce_->isAllAnnounceFailed() &&
+-         btAnnounce_->isAnnounceReady()) {
++  while (btAnnounce_->isAnnounceReady()) {
+     std::string uri = btAnnounce_->getAnnounceUrl();
+     uri_split_result res;
+     memset(&res, 0, sizeof(res));
+--
+2.35.1
