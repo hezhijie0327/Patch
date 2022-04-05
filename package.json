@@ -55,7 +55,7 @@
     "dnsproxy": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/AdguardTeam/dnsproxy.git",
-      "version": "0.42.0"
+      "version": "0.42.1"
     }
   }
 }
