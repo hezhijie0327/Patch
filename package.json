@@ -45,7 +45,7 @@
     "adguardhome": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/AdguardTeam/AdGuardHome.git",
-      "version": "0.107.5"
+      "version": "0.107.6"
     },
     "aria2c": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
