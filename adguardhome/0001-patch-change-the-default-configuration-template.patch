@@ -1,17 +1,17 @@
-From 44b3f8322f095f3a4368dd8a96d89ba60e5eb0ac Mon Sep 17 00:00:00 2001
+From 3e019e3b61903ea0c630a9877b7b7c01c6108a3d Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Thu, 24 Mar 2022 08:10:19 +0800
-Subject: [PATCH] Sync files from official repo.
+Date: Tue, 26 Apr 2022 23:20:58 +0800
+Subject: [PATCH] Change the default configuration template
 
 ---
- internal/dhcpd/http.go            |   2 +-
- internal/dnsforward/dnsforward.go |   8 ++---
- internal/home/config.go           |  48 +++++++++++++++---------------
- internal/home/filter.go           |   5 +---
+ internal/dhcpd/http.go            |  2 +-
+ internal/dnsforward/dnsforward.go |  8 +++---
+ internal/home/config.go           | 48 +++++++++++++++----------------
+ internal/home/filter.go           |  5 +---
  4 files changed, 30 insertions(+), 33 deletions(-)
 
 diff --git a/internal/dhcpd/http.go b/internal/dhcpd/http.go
-index e340addb..b5026bb2 100644
+index e340add..b5026bb 100644
 --- a/internal/dhcpd/http.go
 +++ b/internal/dhcpd/http.go
 @@ -557,7 +557,7 @@ func (s *Server) handleDHCPRemoveStaticLease(w http.ResponseWriter, r *http.Requ
@@ -24,7 +24,7 @@ index e340addb..b5026bb2 100644
  	DefaultDHCPTimeoutICMP = 1000
  )
 diff --git a/internal/dnsforward/dnsforward.go b/internal/dnsforward/dnsforward.go
-index c0cd0e55..30e88b46 100644
+index c0cd0e5..30e88b4 100644
 --- a/internal/dnsforward/dnsforward.go
 +++ b/internal/dnsforward/dnsforward.go
 @@ -26,7 +26,7 @@ import (
@@ -53,10 +53,10 @@ index c0cd0e55..30e88b46 100644
  var webRegistered bool
 
 diff --git a/internal/home/config.go b/internal/home/config.go
-index c81de19e..af3b620c 100644
+index 720683a..0dc4d18 100644
 --- a/internal/home/config.go
 +++ b/internal/home/config.go
-@@ -170,19 +170,19 @@ var config = &configuration{
+@@ -174,19 +174,19 @@ var config = &configuration{
  	BindPort:     3000,
  	BetaBindPort: 0,
  	BindHost:     net.IP{0, 0, 0, 0},
@@ -82,7 +82,7 @@ index c81de19e..af3b620c 100644
  			FastestTimeout: timeutil.Duration{
  				Duration: fastip.DefaultPingWaitTimeout,
  			},
-@@ -193,10 +193,10 @@ var config = &configuration{
+@@ -197,10 +197,10 @@ var config = &configuration{
  			// we introduced a default limit due to this:
  			// https://github.com/AdguardTeam/AdGuardHome/issues/2015#issuecomment-674041912
  			// was later increased to 300 due to https://github.com/AdguardTeam/AdGuardHome/issues/2257
@@ -94,14 +94,19 @@ index c81de19e..af3b620c 100644
 +		FilteringEnabled:           false, // whether or not use filter lists
 +		FiltersUpdateIntervalHours: 1,
  		UpstreamTimeout:            timeutil.Duration{Duration: dnsforward.DefaultTimeout},
- 		ResolveClients:             true,
  		UsePrivateRDNS:             true,
-@@ -207,14 +207,14 @@ var config = &configuration{
+ 	},
+@@ -210,7 +210,7 @@ var config = &configuration{
  		PortDNSOverQUIC: defaultPortQUIC,
  	},
  	DHCP: &dhcpd.ServerConfig{
 -		LocalDomainName: "lan",
 +		LocalDomainName: "localdomain",
+ 	},
+ 	Clients: &clientsConfig{
+ 		Sources: &clientSourcesConf{
+@@ -222,11 +222,11 @@ var config = &configuration{
+ 		},
  	},
  	logSettings: logSettings{
 -		LogCompress:   false,
@@ -117,7 +122,7 @@ index c81de19e..af3b620c 100644
  	},
  	OSConfig:      &osConfig{},
  	SchemaVersion: currentSchemaVersion,
-@@ -222,18 +222,18 @@ var config = &configuration{
+@@ -234,18 +234,18 @@ var config = &configuration{
 
  // initConfig initializes default configuration for the current OS&ARCH
  func initConfig() {
@@ -146,7 +151,7 @@ index c81de19e..af3b620c 100644
 
  	config.DHCP.Conf4.LeaseDuration = dhcpd.DefaultDHCPLeaseTTL
 diff --git a/internal/home/filter.go b/internal/home/filter.go
-index e7688f3f..0ce3d7f3 100644
+index e7688f3..0ce3d7f 100644
 --- a/internal/home/filter.go
 +++ b/internal/home/filter.go
 @@ -57,10 +57,7 @@ func (f *Filtering) Close() {
@@ -162,4 +167,4 @@ index e7688f3f..0ce3d7f3 100644
 
  // field ordering is important -- yaml fields will mirror ordering from here
 --
-2.35.1
+2.36.0
