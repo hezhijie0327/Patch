@@ -435,7 +435,7 @@
   "load_balancing_desc": "Query one upstream server at a time. AdGuard Home uses its weighted random algorithm to pick the server so that the fastest server is used more often.",
   "loading_table_status": "Loading...",
   "local_ptr_default_resolver": "By default, AdGuard Home uses the following reverse DNS resolvers: {{ip}}.",
-  "local_ptr_desc": "The DNS servers that AdGuard Home uses for local PTR queries. These servers are used to resolve the hostnames of clients with private IP addresses, for example \"192.168.12.34\", using reverse DNS. If not set, AdGuard Home uses the addresses of the default DNS resolvers of your OS except for the addresses of AdGuard Home itself.",
+  "local_ptr_desc": "The DNS servers that AdGuard Home uses for local PTR queries. These servers are used to resolve PTR requests for addresses in private IP ranges, for example \"192.168.12.34\", using reverse DNS. If not set, AdGuard Home uses the addresses of the default DNS resolvers of your OS except for the addresses of AdGuard Home itself.",
   "local_ptr_no_default_resolver": "AdGuard Home could not determine suitable private reverse DNS resolvers for this system.",
   "local_ptr_placeholder": "Enter one server address per line",
   "local_ptr_title": "Private reverse DNS servers",
