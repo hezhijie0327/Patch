@@ -1,6 +1,6 @@
-From 3e019e3b61903ea0c630a9877b7b7c01c6108a3d Mon Sep 17 00:00:00 2001
+From 85544e1313eeabb56ed9791bb73a1535f737817b Mon Sep 17 00:00:00 2001
 From: Zhijie He <hezhijie0327@hotmail.com>
-Date: Tue, 26 Apr 2022 23:20:58 +0800
+Date: Wed, 27 Apr 2022 20:27:05 +0800
 Subject: [PATCH] Change the default configuration template
 
 ---
@@ -24,7 +24,7 @@ index e340add..b5026bb 100644
  	DefaultDHCPTimeoutICMP = 1000
  )
 diff --git a/internal/dnsforward/dnsforward.go b/internal/dnsforward/dnsforward.go
-index c0cd0e5..30e88b4 100644
+index c0cd0e5..9f4e901 100644
 --- a/internal/dnsforward/dnsforward.go
 +++ b/internal/dnsforward/dnsforward.go
 @@ -26,7 +26,7 @@ import (
@@ -53,7 +53,7 @@ index c0cd0e5..30e88b4 100644
  var webRegistered bool
 
 diff --git a/internal/home/config.go b/internal/home/config.go
-index 720683a..0dc4d18 100644
+index 14f5781..e0b5870 100644
 --- a/internal/home/config.go
 +++ b/internal/home/config.go
 @@ -174,19 +174,19 @@ var config = &configuration{
@@ -79,10 +79,10 @@ index 720683a..0dc4d18 100644
  			RefuseAny:          true,
 -			AllServers:         false,
 +			AllServers:         true,
+ 			HandleDDR:          true,
  			FastestTimeout: timeutil.Duration{
  				Duration: fastip.DefaultPingWaitTimeout,
- 			},
-@@ -197,10 +197,10 @@ var config = &configuration{
+@@ -198,10 +198,10 @@ var config = &configuration{
  			// we introduced a default limit due to this:
  			// https://github.com/AdguardTeam/AdGuardHome/issues/2015#issuecomment-674041912
  			// was later increased to 300 due to https://github.com/AdguardTeam/AdGuardHome/issues/2257
@@ -96,7 +96,7 @@ index 720683a..0dc4d18 100644
  		UpstreamTimeout:            timeutil.Duration{Duration: dnsforward.DefaultTimeout},
  		UsePrivateRDNS:             true,
  	},
-@@ -210,7 +210,7 @@ var config = &configuration{
+@@ -211,7 +211,7 @@ var config = &configuration{
  		PortDNSOverQUIC: defaultPortQUIC,
  	},
  	DHCP: &dhcpd.ServerConfig{
@@ -105,7 +105,7 @@ index 720683a..0dc4d18 100644
  	},
  	Clients: &clientsConfig{
  		Sources: &clientSourcesConf{
-@@ -222,11 +222,11 @@ var config = &configuration{
+@@ -223,11 +223,11 @@ var config = &configuration{
  		},
  	},
  	logSettings: logSettings{
@@ -122,7 +122,7 @@ index 720683a..0dc4d18 100644
  	},
  	OSConfig:      &osConfig{},
  	SchemaVersion: currentSchemaVersion,
-@@ -234,18 +234,18 @@ var config = &configuration{
+@@ -235,18 +235,18 @@ var config = &configuration{
 
  // initConfig initializes default configuration for the current OS&ARCH
  func initConfig() {
