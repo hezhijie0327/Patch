@@ -33,8 +33,8 @@
       "version": "3.0.3"
     },
     "sqlite": {
-      "source": "https://sqlite.org/2022/sqlite-autoconf-3380400.tar.gz",
-      "version": "3.38.4"
+      "source": "https://sqlite.org/2022/sqlite-autoconf-3380500.tar.gz",
+      "version": "3.38.5"
     },
     "zlib_ng": {
       "source": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz",
@@ -60,12 +60,12 @@
     "mosdns": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/IrineSistiana/mosdns.git",
-      "version": "3.7.3"
+      "version": "3.8.0"
     },
     "mosdns_cn": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/IrineSistiana/mosdns-cn.git",
-      "version": "1.2.2"
+      "version": "1.2.3"
     }
   }
 }
