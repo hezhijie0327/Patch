@@ -66,6 +66,11 @@
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/IrineSistiana/mosdns-cn.git",
       "version": "1.2.3"
+    },
+    "qbittorrent": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/qbittorrent/qBittorrent.git",
+      "version": "4.4.2"
     }
   }
 }
