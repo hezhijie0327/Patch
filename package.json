@@ -70,7 +70,7 @@
     "qbittorrent": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/qbittorrent/qBittorrent.git",
-      "version": "4.4.3"
+      "version": "4.4.3.1"
     }
   }
 }
