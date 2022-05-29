@@ -60,7 +60,7 @@
     "mosdns": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/IrineSistiana/mosdns.git",
-      "version": "3.8.0"
+      "version": "3.9.0"
     },
     "mosdns_cn": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
