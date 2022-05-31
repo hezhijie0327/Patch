@@ -13,8 +13,8 @@
       "version": "1.18.2"
     },
     "gperftools": {
-      "source": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.9.1/gperftools-2.9.1.tar.gz",
-      "version": "2.9.1"
+      "source": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.10/gperftools-2.10.tar.gz",
+      "version": "2.10"
     },
     "libssh2": {
       "source": "https://www.libssh2.org/download/libssh2-1.10.0.tar.gz",
