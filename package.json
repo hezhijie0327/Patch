@@ -45,7 +45,7 @@
     "adguardhome": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/AdguardTeam/AdGuardHome.git",
-      "version": "0.107.6"
+      "version": "0.107.7"
     },
     "aria2c": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
@@ -55,7 +55,7 @@
     "dnsproxy": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "source": "https://github.com/AdguardTeam/dnsproxy.git",
-      "version": "0.43.0"
+      "version": "0.43.1"
     },
     "mosdns": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
