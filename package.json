@@ -1,0 +1,76 @@
+{
+  "module": {
+    "c_ares": {
+      "source": "https://c-ares.org/download/c-ares-1.18.1.tar.gz",
+      "version": "1.18.1"
+    },
+    "expat": {
+      "source": "https://github.com/libexpat/libexpat/releases/download/R_2_4_8/expat-2.4.8.tar.gz",
+      "version": "2.4.8"
+    },
+    "golang": {
+      "source": "https://golang.org/dl/go1.18.3.linux-{GOLANG_ARCH}.tar.gz",
+      "version": "1.18.3"
+    },
+    "gperftools": {
+      "source": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.10/gperftools-2.10.tar.gz",
+      "version": "2.10"
+    },
+    "libssh2": {
+      "source": "https://www.libssh2.org/download/libssh2-1.10.0.tar.gz",
+      "version": "1.10.0"
+    },
+    "libuv": {
+      "source": "https://dist.libuv.org/dist/v1.44.1/libuv-v1.44.1.tar.gz",
+      "version": "1.44.1"
+    },
+    "nodejs": {
+      "source": "https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-{NODEJS_ARCH}.tar.gz",
+      "version": "16.15.1"
+    },
+    "openssl": {
+      "source": "https://www.openssl.org/source/openssl-3.0.3.tar.gz",
+      "version": "3.0.3"
+    },
+    "sqlite": {
+      "source": "https://sqlite.org/2022/sqlite-autoconf-3380500.tar.gz",
+      "version": "3.38.5"
+    },
+    "zlib_ng": {
+      "source": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz",
+      "version": "2.0.6"
+    }
+  },
+  "repo": {
+    "adguardhome": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/AdguardTeam/AdGuardHome.git",
+      "version": "0.107.7"
+    },
+    "aria2c": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/aria2/aria2.git",
+      "version": "1.36.0"
+    },
+    "dnsproxy": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/AdguardTeam/dnsproxy.git",
+      "version": "0.43.1"
+    },
+    "mosdns": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/IrineSistiana/mosdns.git",
+      "version": "3.9.0"
+    },
+    "mosdns_cn": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/IrineSistiana/mosdns-cn.git",
+      "version": "1.4.0"
+    },
+    "qbittorrent": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "source": "https://github.com/qbittorrent/qBittorrent.git",
+      "version": "4.4.3.1"
+    }
+  }
+}
