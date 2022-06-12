@@ -44,32 +44,44 @@
   "repo": {
     "adguardhome": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
       "source": "https://github.com/AdguardTeam/AdGuardHome.git",
+      "source_branch": "master",
       "version": "0.107.7"
     },
     "aria2c": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
       "source": "https://github.com/aria2/aria2.git",
+      "source_branch": "master",
       "version": "1.36.0"
     },
     "dnsproxy": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
       "source": "https://github.com/AdguardTeam/dnsproxy.git",
+      "source_branch": "master",
       "version": "0.43.1"
     },
     "mosdns": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
       "source": "https://github.com/IrineSistiana/mosdns.git",
+      "source_branch": "v4",
       "version": "3.9.0"
     },
     "mosdns_cn": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
       "source": "https://github.com/IrineSistiana/mosdns-cn.git",
+      "source_branch": "main",
       "version": "1.4.0"
     },
     "qbittorrent": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
       "source": "https://github.com/qbittorrent/qBittorrent.git",
+      "source_branch": "master",
       "version": "4.4.3.1"
     }
   }
