@@ -29,8 +29,8 @@
       "version": "16.15.1"
     },
     "openssl": {
-      "source": "https://www.openssl.org/source/openssl-3.0.3.tar.gz",
-      "version": "3.0.3"
+      "source": "https://www.openssl.org/source/openssl-3.0.4.tar.gz",
+      "version": "3.0.4"
     },
     "sqlite": {
       "source": "https://sqlite.org/2022/sqlite-autoconf-3380500.tar.gz",
