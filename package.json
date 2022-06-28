@@ -68,7 +68,7 @@
       "patch_branch": "main",
       "source": "https://github.com/IrineSistiana/mosdns.git",
       "source_branch": "main",
-      "version": "4.0.0"
+      "version": "4.1.2"
     },
     "mosdns_cn": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
