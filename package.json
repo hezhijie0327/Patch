@@ -68,7 +68,7 @@
       "patch_branch": "main",
       "source": "https://github.com/IrineSistiana/mosdns.git",
       "source_branch": "main",
-      "version": "4.1.4"
+      "version": "4.1.5"
     },
     "qbittorrent": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
