@@ -29,8 +29,8 @@
       "version": "16.15.1"
     },
     "openssl": {
-      "source": "https://www.openssl.org/source/openssl-3.0.4.tar.gz",
-      "version": "3.0.4"
+      "source": "https://www.openssl.org/source/openssl-3.0.5.tar.gz",
+      "version": "3.0.5"
     },
     "sqlite": {
       "source": "https://sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
@@ -55,6 +55,13 @@
       "source": "https://github.com/aria2/aria2.git",
       "source_branch": "master",
       "version": "1.36.0"
+    },
+    "clash": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
+      "source": "https://github.com/Dreamacro/clash.git",
+      "source_branch": "master",
+      "version": "1.11.0"
     },
     "dnsproxy": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
