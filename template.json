@@ -56,6 +56,13 @@
       "source_branch": "master",
       "version": "{ARIA2_VERSION}"
     },
+    "clash": {
+      "patch": "https://github.com/hezhijie0327/Patch.git",
+      "patch_branch": "main",
+      "source": "https://github.com/Dreamacro/clash.git",
+      "source_branch": "master",
+      "version": "{CLASH_VERSION}"
+    },
     "dnsproxy": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
       "patch_branch": "main",
