@@ -25,8 +25,8 @@
       "version": "1.44.1"
     },
     "nodejs": {
-      "source": "https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-{NODEJS_ARCH}.tar.gz",
-      "version": "16.15.1"
+      "source": "https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-{NODEJS_ARCH}.tar.gz",
+      "version": "16.16.0"
     },
     "openssl": {
       "source": "https://www.openssl.org/source/openssl-3.0.5.tar.gz",
@@ -61,7 +61,7 @@
       "patch_branch": "main",
       "source": "https://github.com/Dreamacro/clash.git",
       "source_branch": "master",
-      "version": "1.11.0"
+      "version": "1.11.4"
     },
     "dnsproxy": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
