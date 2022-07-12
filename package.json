@@ -9,8 +9,8 @@
       "version": "2.4.8"
     },
     "golang": {
-      "source": "https://golang.org/dl/go1.18.3.linux-{GOLANG_ARCH}.tar.gz",
-      "version": "1.18.3"
+      "source": "https://golang.org/dl/go1.18.4.linux-{GOLANG_ARCH}.tar.gz",
+      "version": "1.18.4"
     },
     "gperftools": {
       "source": "https://github.com/gperftools/gperftools/releases/download/gperftools-2.10/gperftools-2.10.tar.gz",
@@ -21,8 +21,8 @@
       "version": "1.10.0"
     },
     "libuv": {
-      "source": "https://dist.libuv.org/dist/v1.44.1/libuv-v1.44.1.tar.gz",
-      "version": "1.44.1"
+      "source": "https://dist.libuv.org/dist/v1.44.2/libuv-v1.44.2.tar.gz",
+      "version": "1.44.2"
     },
     "nodejs": {
       "source": "https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-{NODEJS_ARCH}.tar.gz",
@@ -33,8 +33,8 @@
       "version": "3.0.5"
     },
     "sqlite": {
-      "source": "https://sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
-      "version": "3.39.0"
+      "source": "https://sqlite.org/2022/sqlite-autoconf-000.tar.gz",
+      "version": ""
     },
     "zlib_ng": {
       "source": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz",
@@ -75,7 +75,7 @@
       "patch_branch": "main",
       "source": "https://github.com/IrineSistiana/mosdns.git",
       "source_branch": "main",
-      "version": "4.1.5"
+      "version": "4.1.6"
     },
     "qbittorrent": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
