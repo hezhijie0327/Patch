@@ -33,8 +33,8 @@
       "version": "3.0.5"
     },
     "sqlite": {
-      "source": "https://sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
-      "version": "3.39.0"
+      "source": "https://sqlite.org/2022/sqlite-autoconf-3390100.tar.gz",
+      "version": "3.39.1"
     },
     "zlib_ng": {
       "source": "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz",
@@ -47,7 +47,7 @@
       "patch_branch": "main",
       "source": "https://github.com/AdguardTeam/AdGuardHome.git",
       "source_branch": "master",
-      "version": "0.107.7"
+      "version": "0.107.8"
     },
     "aria2c": {
       "patch": "https://github.com/hezhijie0327/Patch.git",
